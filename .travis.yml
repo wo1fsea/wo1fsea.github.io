@@ -1,0 +1,26 @@
+language: ruby
+sudo: false
+cache: bundler
+rvm:
+  - 2.3.3
+env:
+  global:
+    secure: "rYR6QQVY2egqK43+LdNrF5Ykd6KyQuJmK2vHouPdI+1QiPuASuYZBf7pvyvTLcIV6b5tEt5DZSdygH5XXhcWfKuDZsM9CHADK6Q8nBYO5kPbP5JeSPGDEAOnEe+nylBYDtGQz1evIesj/oJfJ74x2dKY5rftp8VMirXu7surzKtEcJlxIheCeTSFWHkpR//pv0FkANM/LmHB7r4Zz0pGV3ubopbEDiLwplaTYOKHJRAJktYbMPei7f5Uw3/deABUVaV4Tri2wtx2fasi2L3iYEDclPR+S6znvPChXxopd41zBYDipCUKz9ECpltPjdUAnUj3onNcZF9YFANJPLmXH2lMTrOUrNhA3+5bfSKXloFTriqkj3LBHQP3XXdqeq/f/oJn4quOmK8/X0yL4hyIBvJaGbmYKzNIzM+d5zjlmt33HNYvaOIo2vcHIUUO9Bnwz71A3zWdLj+uHOWvXZwnhpaIdNA5vPTgUoVBzrhcAH9FU//eu60Nz75qVK1TB1LrjH4yj+CaQcyMua1c6aZEHXDdELcbalLO274lIBwhaSoFgkuXRcVAqD9hXeE9Lo9oyc9+bEYSc0W0TRbNz85Y8rMdDOTtswj8g0zYEK+Uv7sLQ//2TVB9ifAZ2sPCk9Ub1hF2AJc6E8/K3YBQUd9BnZJo1SaPTuaYw59xQ695N2w="
+before_install:
+  - gem update --system
+  - gem update --remote bundler
+before_script:
+  - git config --global user.name "$(git --no-pager show --no-patch --format='%an')"
+  - git config --global user.email "$(git --no-pager show --no-patch --format='%ae')"
+script:
+  - git clone -b master --depth 1 --quiet "https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git" _site
+  - rm -rf _site/*
+  - bundle exec jekyll build
+after_success:
+  - cd _site
+  - git add -A
+  - git commit -m "Updated to $(git rev-parse --short $TRAVIS_COMMIT) at $(date -u +'%Y-%m-%d %H:%M:%S %Z')"
+  - git push "https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git" master
+branches:
+  only:
+    - draft
