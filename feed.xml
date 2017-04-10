@@ -5,7 +5,7 @@
   
   <link href="https://wo1fsea.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://wo1fsea.github.io/" rel="alternate" type="text/html" hreflang="en" />
-  <updated>2017-04-10T15:13:38+00:00</updated>
+  <updated>2017-04-10T15:29:25+00:00</updated>
   <id>https://wo1fsea.github.io//</id>
 
   
@@ -328,6 +328,304 @@
 
       
         <summary type="html">Eos eu docendi tractatos sapientem, brute option menandri in vix, quando vivendo accommodare te ius. Nec melius fastidii constituam id, viderer theophrastus ad sit, hinc semper periculis cum id. Noluisse postulant assentior est in, no choro sadipscing repudiandae vix. Vis in euismod delenit dignissim. Ex quod nostrum sit, suas decore animal id ius, nobis solet detracto quo te. No laudem altera adolescens has, volumus lucilius eum no. Eam ei nulla audiam efficiantur. Suas affert per no, ei tale nibh sea. Sea ne magna harum, in denique scriptorem sea, cetero alienum tibique ei eos. Labores persequeris referrentur eos ei.</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">A_quick_introduction_to_navmesh</title>
+      
+      <link href="https://wo1fsea.github.io/2016/08/21/A_Quick_Introduction_to_NavMesh/" rel="alternate" type="text/html" title="A_quick_introduction_to_navmesh" />
+      <published>2016-08-21T00:00:00+00:00</published>
+      <updated>2016-08-21T00:00:00+00:00</updated>
+      <id>https://wo1fsea.github.io/2016/08/21/A_Quick_Introduction_to_NavMesh</id>
+      <content type="html" xml:base="https://wo1fsea.github.io/2016/08/21/A_Quick_Introduction_to_NavMesh/">&lt;p&gt;title: 谷阿莫带你十分钟看完 NavMesh 生成算法
+date: 2016-08-21 12:32:22
+tags: [Recast &amp;amp; Detour, NavMesh, Game]
+—&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;（本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”）&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;大家好，我是谷阿莫，今天我给大家带来的是 NavMesh 的生成方法。&lt;/p&gt;
+
+&lt;p&gt;这个算法从一个二维的简化例子开始讲起。当我们谈寻路算法的时候，在二维世界中，我们谈的是这样一个问题：&lt;/p&gt;
+
+&lt;p&gt;如下图，左边有个走廊，中间是一个通道，右边是一个骷髅状的洞穴。起点在左，目标在右，如何找到一条最为合适的路径。&lt;/p&gt;
+
+&lt;p&gt;在这个例子中，我们似乎很难直接求解一个合适的路径。主要的问题时，我们掌握的数据并不是一个抽象的结构化的数据。&lt;/p&gt;
+
+&lt;p&gt;所以，首先，我们需要从问题中产生一个抽象的结构化的数据，用来简化问题求解。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[1].png&quot; alt=&quot;A Navigation Case in 2D&quot; /&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;一个很朴素的思路，即是把地图数据栅格化（像素化）。在栅格化的地图上，至少可以通过搜索格子的方式（向周围四方向搜索或八方向）找到一条可行的路径，尽管很挫。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[2].png&quot; alt=&quot;Pixelize Voxelize&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在栅格化的地图上做一个边缘提取，获得地图区域像素化后的内边缘，得到以下图形数据。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[3].png&quot; alt=&quot;Extract Edge&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;进一步，对锯齿化的边缘进行简化，得到一个简化的多边形地图区域。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[4].png&quot; alt=&quot;Simplify Polygon&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以使用下述方法对锯齿化的边缘进行简化。
+选择两个点进行连线可得到一条简化的边。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[5].png&quot; alt=&quot;Simplify Polygon&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;找到离该简化边缘距离最远的点，将该点加入简化多变形的轮廓集合中，此时将产生替代旧边缘的两条新的简化边缘。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[6].png&quot; alt=&quot;Simplify Polygon&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;重复该过程，直到所有不在简化轮廓集合中的点距离简化的边缘距离都小于某阈值。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[7].png&quot; alt=&quot;Simplify Polygon&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;考虑到简化后的地图实际上很多存在很多可以直接通过直线联通的区域，我们可以进一步对这个地图做一个简单的划分。如下图，简化后的多边形地图区域可以分割为以下四个联通区域。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[8].png&quot; alt=&quot;Partition Into Convex Areas&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;分割区域按照以下算法进行：
+两点间直线距离/两点边界距离 为 度量，当该值小于一定阈值时，进行区域分割。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[9].png&quot; alt=&quot;Convex Partitioning&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;该过程可以以递归的方式进行，整个过程复杂度&amp;lt;=O(Log(n)*n)，n为地图边。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[10].png&quot; alt=&quot;Recursively Partition&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在完成区域分割后，我们可将整个地图数据视为一个图。即 左走廊 -&amp;gt; 中间通道 -&amp;gt; 右上洞穴区域 -&amp;gt; 右下洞穴区域。每个图节点区域中的两点都可以通过简单的直线路径相互连通。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[11].png&quot; alt=&quot;Convex Area Graph Complete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;此时，我们可以用最短路径算法（如 Dijkstra ）来解决图节点间的寻路问题，而图节点内的路径可以简单的通过两点间连线完成。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[12].png&quot; alt=&quot;Pathfinding&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上面例子是一个最简单的地图形式，下面考虑地图中带空洞（不可行走）区域的情况。下图在右边骷髅状洞穴区域添加两个不可行走的空洞。我们希望算法能够生成如下图表示的寻路路径。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[13].png&quot; alt=&quot;Holes in the Free-Space&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;使用和上文描述相同的步骤对地图进行像素画、边缘提取、多边形简化，可以得到如下地图数据。对每个空洞区域， 找到其和地图边界点距离最小的点，将该两点的连线作为额外边界添加到地图中。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[14].png&quot; alt=&quot;Splice Location&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;此时，地图退化为简单多边形（如下图所示），应用上述区域分割方法即可将地图进一步处理。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[15].png&quot; alt=&quot;Add Splice Segments&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;将地图抽象为如下联通区域图，即可在图上应用寻路算法。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[16].png&quot; alt=&quot;Convex Area Graph Complete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;看一个三维空间上的例子，在3维空间中，我们需要将二维对地图数据的像素化过程变为对三维地图模型数据的体素化过程。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[17].png&quot; alt=&quot;Case in 3D&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;而事实上，在三维空间，模型数据表示的是不可进入的区域，在空间中，可以使用下图数据结构表示可行走的地图区域，每一个二维地图网格中存储一组由可行走区域上边界与下边界描述的数据。其中，可行走区域的下边界，即地板表面数据即是我们用来生成寻路网格的表面。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[18].png&quot; alt=&quot;Open Spans&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如下图所示，使用寻路角色身高可以对可行走区域进行剔除。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[19].png&quot; alt=&quot;Walkable Surface Removal&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;考虑一个在三维空间中可行区域存在重叠的情况（如下图，形如一个盘旋的楼梯区域）。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[20].png&quot; alt=&quot;3D Overlap&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;直接使用和上文二维例子描述中相同的区域分割算法进行区域分割。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[21].png&quot; alt=&quot;3D Partitioning&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图所示地图可被分割为如下所示无重叠的两部分区域，即三维空间中地图重叠部分可在区域分割过程中解决。可对该两区域继续递归进行处理，生成上文描述的寻路区域数据。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[22].png&quot; alt=&quot;3D Partitioning&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;对于不同体型半径的，我们希望会生成不同的寻路路径，如下图例子所示，寻路角色体型半径过大无法通过中间连接区域，所以图中在上文生成的路径对体型半径过大的角色是不可行的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[23].png&quot; alt=&quot;Different Creature Shapes&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;该问题可以在提取地图区域边缘时，向内多取一个角色体型半径生成特殊的寻路地图（即每种半径生成一个寻路网格）。同一地图数据，针对大体型角色，边缘提取过程后生成的寻路区域如下图所示。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[24].png&quot; alt=&quot;Different Creature Shapes&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;关于动态障碍，可采用在运行时改变寻路地图与动态障碍物重叠的节点数据完成，如下图所示，再添加动态障碍物前期望生成的寻路路径如左图，添加障碍物后期望生成的寻路路径如右图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[25].png&quot; alt=&quot;Dynamic Obstacles&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;添加动态障碍物后，仅需在运行时替换与障碍物重叠的BCD节点，将其数据替换为B1B2C1C2D1D2D3节点，当障碍从地图中取出后再将界点恢复。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[26].png&quot; alt=&quot;Dynamic Obstacles&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;关于如何寻找寻路路径上的拐点。当路径跨多个联通区域时，可使用以下方法确定路径上的拐点。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[27].png&quot; alt=&quot;Finding the Next Corner&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;首先，确定路径上穿过的区域边缘。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[28].png&quot; alt=&quot;“Portals” Between Areas&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;顺序遍历边缘，记录最右的左边缘点与最左的右边缘点。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[29].png&quot; alt=&quot;Finding the Next Corner&quot; /&gt;
+&lt;img src=&quot;/images/About_NavMesh/Image[30].png&quot; alt=&quot;Finding the Next Corner&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;当最右的左边缘点与最右的左边缘点发生重叠时，此时该两边缘点中较早遇到的即是路径上的拐点。将起始位置置为该拐点，继续进行相同处理，直至找到路径上所有拐点。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[31].png&quot; alt=&quot;Finding the Next Corner&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这里就结束了，科科。&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>Yous</name>
+          
+          
+        </author>
+      
+
+      
+
+      
+
+      
+        <summary type="html">title: 谷阿莫带你十分钟看完 NavMesh 生成算法 date: 2016-08-21 12:32:22 tags: [Recast &amp;amp; Detour, NavMesh, Game] — （本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”） 大家好，我是谷阿莫，今天我给大家带来的是 NavMesh 的生成方法。 这个算法从一个二维的简化例子开始讲起。当我们谈寻路算法的时候，在二维世界中，我们谈的是这样一个问题： 如下图，左边有个走廊，中间是一个通道，右边是一个骷髅状的洞穴。起点在左，目标在右，如何找到一条最为合适的路径。 在这个例子中，我们似乎很难直接求解一个合适的路径。主要的问题时，我们掌握的数据并不是一个抽象的结构化的数据。 所以，首先，我们需要从问题中产生一个抽象的结构化的数据，用来简化问题求解。</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">A_new_begin</title>
+      
+      <link href="https://wo1fsea.github.io/2014/11/28/A_New_Begin/" rel="alternate" type="text/html" title="A_new_begin" />
+      <published>2014-11-28T00:00:00+00:00</published>
+      <updated>2014-11-28T00:00:00+00:00</updated>
+      <id>https://wo1fsea.github.io/2014/11/28/A_New_Begin</id>
+      <content type="html" xml:base="https://wo1fsea.github.io/2014/11/28/A_New_Begin/">&lt;p&gt;title: 实习离职
+date: 2014-11-28 05:41:42
+tags: [Game, Work]
+—&lt;/p&gt;
+
+&lt;p&gt;今天终于实习离职了，从5月8日到11月28日，在网易游戏实习了接近7个月。今天离职信里终结了下，在UniSDK，完整的东西大概做了下面这些，然后零零索索的给游戏处理各种iOS疑难杂症。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+ NtUniSdkFramework
+	+ 91
+	+ PP
+	+ Tongbu
+	+ DownJoy
+	+ iTools
+	+ KuaiYong
+	+ NetEase
+	+ YiXin
+	+ Line
+
++ NtShareSdkFramework
+	+ YiXin
+	+ WeiXin
+	+ Weibo
+
++ NtUniSdk Xcode Plugin
+
++ U3D C# Wrapper for both Android and iOS NtUniSdk
+
++ Flash ANE for both Android and iOS NtUniSdk
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;大半年来，还是能学到不少东西，从没接触过iOS开发，到现在许多线上的项目都用着我们的iOS UniSDK。体会最深的还是，AppStore IAP部分的代码，来来去去，踩了不少坑，也加了不少班。对一个比较长的业务流程，其实是很难保证在上线前能得到非常完备的测试的。在大量的用户面前，你完全不知道用户到底会如何使用。另外，各种概率性出现的bug也是很难重现的。比如，第一次IAP的代码上线的时候，和G3程序在重现一个0。1%概率的bug，愣是一个下午过去了，都没能重现出来，最后，也是直接靠猜了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/bmiddle/82a507cagw1emndj5fsn2g20dw07tnbp.gif&quot; alt=&quot;用户是这样使用我们开发的软件的&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;明天，就不用再考虑上班的事了，先睡几天大懒觉。
+今天走的时候，一个同学说，“你居然是实习，你放着大好的时间不去浪，在这里呆了7个月？你以后会后悔的。”
+可是，不实习，回来学校还是要干活的啊…&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>Yous</name>
+          
+          
+        </author>
+      
+
+      
+
+      
+
+      
+        <summary type="html">title: 实习离职 date: 2014-11-28 05:41:42 tags: [Game, Work] — 今天终于实习离职了，从5月8日到11月28日，在网易游戏实习了接近7个月。今天离职信里终结了下，在UniSDK，完整的东西大概做了下面这些，然后零零索索的给游戏处理各种iOS疑难杂症。 + NtUniSdkFramework + 91 + PP + Tongbu + DownJoy + iTools + KuaiYong + NetEase + YiXin + Line + NtShareSdkFramework + YiXin + WeiXin + Weibo + NtUniSdk Xcode Plugin + U3D C# Wrapper for both Android and iOS NtUniSdk + Flash ANE for both Android and iOS NtUniSdk</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">A_new_blog</title>
+      
+      <link href="https://wo1fsea.github.io/2014/07/17/A_New_Blog/" rel="alternate" type="text/html" title="A_new_blog" />
+      <published>2014-07-17T00:00:00+00:00</published>
+      <updated>2014-07-17T00:00:00+00:00</updated>
+      <id>https://wo1fsea.github.io/2014/07/17/A_New_Blog</id>
+      <content type="html" xml:base="https://wo1fsea.github.io/2014/07/17/A_New_Blog/">&lt;p&gt;title: A_New_Blog
+date: 2014-07-17 08:25:34
+tags: daily
+—&lt;/p&gt;
+
+&lt;p&gt;折腾了几天，先post上第一篇。&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>Yous</name>
+          
+          
+        </author>
+      
+
+      
+
+      
+
+      
+        <summary type="html">title: A_New_Blog date: 2014-07-17 08:25:34 tags: daily — 折腾了几天，先post上第一篇。</summary>
       
 
       
