@@ -45,7 +45,7 @@ gems:
   - jekyll-sitemap
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
 excerpt_separator: "<!-- more -->"
 
 # Outputting
