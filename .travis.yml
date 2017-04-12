@@ -1,6 +1,6 @@
 language: ruby
 sudo: false
-cache: bundler
+cache: bundler redcarpet
 rvm:
   - 2.3.3
 env:
