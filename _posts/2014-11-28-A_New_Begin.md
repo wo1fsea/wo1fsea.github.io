@@ -1,6 +1,9 @@
-title: 实习离职
-date: 2014-11-28 05:41:42
-tags: [Game, Work]
+---
+layout: post
+title: "实习离职"
+date: 2014-11-28 05:41:42 +0800
+categories: Daily
+keywords: Game, Work
 ---
 
 今天终于实习离职了，从5月8日到11月28日，在网易游戏实习了接近7个月。今天离职信里终结了下，在UniSDK，完整的东西大概做了下面这些，然后零零索索的给游戏处理各种iOS疑难杂症。

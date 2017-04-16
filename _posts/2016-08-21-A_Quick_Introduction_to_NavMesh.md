@@ -1,7 +1,11 @@
-title: 谷阿莫带你十分钟看完 NavMesh 生成算法
-date: 2016-08-21 12:32:22
-tags: [Recast & Detour, NavMesh, Game]
 ---
+layout: post
+title: "谷阿莫带你十分钟看完 NavMesh 生成算法"
+date: 2016-08-21 12:32:22 +0800
+categories: Game
+keywords: Recast & Detour, NavMesh, Game
+---
+
 
 *（本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”）*
 
