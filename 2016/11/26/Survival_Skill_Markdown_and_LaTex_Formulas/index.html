@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>生存技能 01. Markdown &amp; LaTex Formulas</title>
+  <meta name="description" content="做笔记写文档最恼人的，可能就是文档标题格式字体字号等等的设置了。所幸用 Markdown 之后，都不用怎么考虑这些细节问题。然而，偶然读书遇到公式，想要记录下来还是挺麻烦的。最好的方法可能是截图，但是还是有格式不一致，不能二次编辑等等问题。这两天发现 atom 的 MPP 插件居然支持 LaTex 的公式编辑和渲染，再配合 google api 的 LaTex 公式渲染，正好解决了这个困扰已久的问题。 恰好最近正在反思，自己平时看书翻资料时间花不少，但记录总结的却不多。正好借机培养下习惯，从一些基础的东西开始整理。掌握这些工具，怎么看都是生存技能，所以这篇叫《生存技能 01. Markdown &amp;amp; LaTex Formulas》，从用 Markdown 和 LaTex 开始。">
+  <meta name="keywords" content="Survival Skill, Markdown, LaTex">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://wo1fsea.github.io/2016/11/26/Survival_Skill_Markdown_and_LaTex_Formulas/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="whiteglass theme" href="https://wo1fsea.github.io/feed.xml">
+
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:title" content="生存技能 01. Markdown &amp; LaTex Formulas">
+  <meta name="twitter:description" content="做笔记写文档最恼人的，可能就是文档标题格式字体字号等等的设置了。所幸用 Markdown 之后，都不用怎么考虑这些细节问题。然而，偶然读书遇到公式，想要记录下来还是挺麻烦的。最好的方法可能是截图，但是还是有格式不一致，不能二次编辑等等问题。这两天发现 atom 的 MPP 插件居然支持 LaTex 的公式编辑和渲染，再配合 google api 的 LaTex 公式渲染，正好解决了这个困扰已...">
+  
+  
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Bitter:400,700,400italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+  
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">whiteglass theme</a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/archives/">Archives</a>
+      
+        
+        <a class="page-link" href="https://github.com/yous/whiteglass">GitHub</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">生存技能 01. Markdown &amp; LaTex Formulas</h1>
+    
+    <p class="post-meta"><time datetime="2016-11-26T16:21:11+00:00" itemprop="datePublished">Nov 26, 2016</time> • 
+  
+  
+    
+  
+    
+  
+    
+  
+    
+      <a href="/categories/survival/">Survival</a>,
+    
+  
+    
+  
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <a href="/categories/skill/">Skill</a>
+    
+  
+
+</p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>做笔记写文档最恼人的，可能就是文档标题格式字体字号等等的设置了。所幸用 Markdown 之后，都不用怎么考虑这些细节问题。然而，偶然读书遇到公式，想要记录下来还是挺麻烦的。最好的方法可能是截图，但是还是有格式不一致，不能二次编辑等等问题。这两天发现 atom 的 MPP 插件居然支持 LaTex 的公式编辑和渲染，再配合 google api 的 LaTex 公式渲染，正好解决了这个困扰已久的问题。</p>
+
+<p>恰好最近正在反思，自己平时看书翻资料时间花不少，但记录总结的却不多。正好借机培养下习惯，从一些基础的东西开始整理。掌握这些工具，怎么看都是生存技能，所以这篇叫《生存技能 01. Markdown &amp; LaTex Formulas》，从用 Markdown 和 LaTex 开始。</p>
+
+<p><!-- more --></p>
+
+<p>## Markdown</p>
+
+<blockquote>
+  <p>Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。[4]这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。 – wikipedia</p>
+</blockquote>
+
+<p>更具体的介绍可见 <a href="http://daringfireball.net/projects/markdown/">Markdown官方主页</a> 。</p>
+
+<p>下面列出 Markdown 语法的基本元素。</p>
+
+<h3>标题</h3>
+
+<p>Markdown 标题可以选用下列两种风格：</p>
+
+<p>风格1:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>标题一
+===
+
+标题二
+---
+</code></pre>
+</div>
+
+<p>或者，风格2，由1到6个#开头的标题形式：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 标题一
+
+## 标题二
+
+###### 标题六
+</code></pre>
+</div>
+
+<h3>引用</h3>
+
+<p>Markdown 引用使用 &gt; 符号作为行起始字符，如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; 引用
+</code></pre>
+</div>
+
+<p>多行引用可写作：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; 引用行1
+引用行2
+</code></pre>
+</div>
+
+<p>或：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; 引用行1
+&gt; 引用行2
+</code></pre>
+</div>
+
+<h3>列表</h3>
+
+<p>无序列表写作：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>* a
+* b
+* c
+</code></pre>
+</div>
+
+<p>或：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>+ a
++ b
++ c
+</code></pre>
+</div>
+
+<p>或：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- a
+- b
+- c
+</code></pre>
+</div>
+
+<p>有序列表：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1. a
+2. b
+3. c
+</code></pre>
+</div>
+
+<p>或：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1. a
+1. b
+1. c
+</code></pre>
+</div>
+
+<h3>表格</h3>
+
+<p>在 Markdown 中使用如下格式：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>|h1  |h2  |h3  |
+|:---|:--:|---:|
+|v1  |v2  |v3  |
+</code></pre>
+</div>
+
+<p>将生成下列表格：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">h1</th>
+      <th style="text-align: center">h2</th>
+      <th style="text-align: right">h3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">v1</td>
+      <td style="text-align: center">v2</td>
+      <td style="text-align: right">v3</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>代码块</h3>
+
+<p>Markdown 中缩进一个字表符或者4个空格表示一个代码块：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>这是文章。
+    这是代码块。
+</code></pre>
+</div>
+
+<p>或者使用</p>
+
+<h3>分割线</h3>
+
+<p>单行使用三个以上的下划线，星号，减号可以生成一个分割线。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>* * *
+
+***
+
+*****
+
+- - -
+
+---------------------------------------
+</code></pre>
+</div>
+
+<h3>图片</h3>
+
+<p>使用下列方式可插入图片：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>![图片描述](图片地址)
+</code></pre>
+</div>
+
+<h3>链接</h3>
+
+<p>使用下列方式可插入链接：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[链接描述](链接地址)
+</code></pre>
+</div>
+
+<h3>强调</h3>
+
+<p>在 Markdown 中，使用 <code class="highlighter-rouge">*斜体*</code> 表示 <em>斜体</em>，使用 <code class="highlighter-rouge">**粗体**</code> 表示 <strong>粗体</strong> 。</p>
+
+<h2>LaTex 公式</h2>
+
+<h3>上下标</h3>
+
+<p>在 LaTex 中，使用 ^ 表示上标， _ 表示下标。</p>
+
+<p>例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>\[ E=mc^2 \]
+</code></pre>
+</div>
+
+<p>表示</p>
+
+<p><img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=E=mc^2" alt="" /></p>
+
+<h3>根式与分式</h3>
+
+<p>根式用\sqrt{·}来表示，分式用\frac{·}{·}来表示（第一个参数为分子，第二个为分母）。</p>
+
+<p>例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>\[ \Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a} \]
+</code></pre>
+</div>
+
+<p>表示：</p>
+
+<p><img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" alt="" /></p>
+
+<h3>运算符</h3>
+
+<p>下列运算符分别表示：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>\[ \pm\; \times \; \div\; \cdot\; \cap\; \cup\; \geq\; \leq\; \neq\; \approx\; \equiv\; \sum\; \prod\; \lim\; \int\; \]
+</code></pre>
+</div>
+
+<p><img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=\pm\; \times \; \div\; \cdot\; \cap\; \cup\; \geq\; \leq\; \neq\; \approx\; \equiv\; \sum\; \prod\; \lim\; \int\;" alt="" /></p>
+
+<h3>分隔符</h3>
+
+<p>各种括号可使用 \big, \Big, \bigg, \Bigg 调整大小。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>\[ \Bigg[\bigg[\Big[\big[[x]\big]\Big]\bigg]\Bigg] \]
+\[ \Bigg\{\bigg\{\Big\{\big\{\{x\}\big\}\Big\}\bigg\}\Bigg\} \]
+\[ \Bigg\langle\bigg\langle\Big\langle\big\langle\langle{x}\rangle\big\rangle\Big\rangle\bigg\rangle\Bigg\rangle \]
+</code></pre>
+</div>
+
+<p><img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=\Bigg(\bigg(\Big(\big((x)\big)\Big)\bigg)\Bigg)" alt="" />
+<img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=\Bigg\{\bigg\{\Big\{\big\{\{x\}\big\}\Big\}\bigg\}\Bigg\}" alt="" />
+<img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=\Bigg\langle\bigg\langle\Big\langle\big\langle\langle{x}\rangle\big\rangle\Big\rangle\bigg\rangle\Bigg\rangle" alt="" /></p>
+
+<h3>省略号</h3>
+
+<p>省略号有以下的表示：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>\[ x_1,x_2,\dots,x_n \quad 1,2,\cdots,n \quad \vdots \quad \ddots \]
+</code></pre>
+</div>
+
+<p><img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=x_1,x_2,\dots,x_n \quad 1,2,\cdots,n \quad \vdots \quad \ddots" alt="" /></p>
+
+<h3>矩阵</h3>
+
+<p>有下列形式的矩阵描述：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>\[ \begin{pmatrix} a&amp;b\\c&amp;d \end{pmatrix} \quad
+\begin{bmatrix} a&amp;b\\c&amp;d \end{bmatrix} \quad
+\begin{Bmatrix} a&amp;b\\c&amp;d \end{Bmatrix} \quad
+\begin{vmatrix} a&amp;b\\c&amp;d \end{vmatrix} \quad
+\begin{Vmatrix} a&amp;b\\c&amp;d \end{Vmatrix} \]
+</code></pre>
+</div>
+
+<p><img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=\begin{pmatrix} a%26b\\c%26d \end{pmatrix}" alt="" />
+<img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=\begin{bmatrix} a%26b\\c%26d \end{bmatrix}" alt="" />
+<img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=\begin{Bmatrix} a%26b\\c%26d \end{Bmatrix}" alt="" />
+<img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=\begin{vmatrix} a%26b\\c%26d \end{vmatrix}" alt="" />
+<img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=\begin{Vmatrix} a%26b\\c%26d \end{Vmatrix}" alt="" /></p>
+
+<h3>分段函数</h3>
+
+<p>分段函数可以用 cases 来实现。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>\[ y=\begin{cases}
+-x,\quad x\leq 0 \\
+x,\quad x&gt;0
+\end{cases} \]
+</code></pre>
+</div>
+
+<p><img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=y=\begin{cases} -x,\quad x\leq 0 \\x,\quad x&gt;0\end{cases}" alt="" /></p>
+
+<h3>更多</h3>
+
+<p>详细的 LaTex 数学公式入门教程可参考 Michael Downes 的<a href="/files/LaTex/short_math_guide.pdf">Short Math Guide for LaTex</a>。</p>
+
+<h2>将 LaTex 公式转换为图片</h2>
+
+<p>使用 google chart api 可以生成 LaTex 公式图片，接口如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://chart.googleapis.com/chart?cht=tx&amp;chl=这里填写LaTex公式
+</code></pre>
+</div>
+
+<p>例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://chart.googleapis.com/chart?cht=tx&amp;chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+</code></pre>
+</div>
+
+<p>结果为：</p>
+
+<p><img src="http://chart.googleapis.com/chart?cht=tx&amp;chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" alt="" /></p>
+
+<p>需要注意的是在 url 中填入的公式中需要处理好 <em>&amp;</em> 等字符的转换。</p>
+
+  </div>
+
+</article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+&copy; Yous - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="https://wo1fsea.github.io/feed.xml">RSS</a>
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

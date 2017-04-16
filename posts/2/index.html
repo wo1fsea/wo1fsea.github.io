@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>whiteglass theme</title>
+  <meta name="description" content="Minimal, responsive Jekyll theme for hackers.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://wo1fsea.github.io/posts/2/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="whiteglass theme" href="https://wo1fsea.github.io/feed.xml">
+
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:title" content="whiteglass theme">
+  <meta name="twitter:description" content="Minimal, responsive Jekyll theme for hackers.">
+  
+  
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Bitter:400,700,400italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+  
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">whiteglass theme</a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/archives/">Archives</a>
+      
+        
+        <a class="page-link" href="https://github.com/yous/whiteglass">GitHub</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="home">
+
+  
+
+  
+
+  <ul class="post-list">
+    
+      
+      
+
+      <li>
+        <header class="post-header">
+          <h1 class="post-title">
+            <a class="post-link" href="/2014/11/24/Black_Magic_Xcode_Plugin/">黑魔法之Xcode Plugin开发</a>
+          </h1>
+
+          <p class="post-meta">Nov 24, 2014 • 
+  
+  
+    
+  
+    
+      <a href="/categories/ios/">iOS</a>
+    
+  
+    
+  
+    
+  
+    
+  
+
+</p>
+        </header>
+
+        <div class="post-content">
+          <p>Xcode 插件的黑科技</p>
+
+<p>##1. 取得项目路径</p>
+
+<p>先贴段代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>NSString *workspacePath = @"";
+
+// to find current project path
+NSArray *workspaceWindowControllers = [NSClassFromString(@"IDEWorkspaceWindowController") valueForKey:@"workspaceWindowControllers"];
+id workSpace;
+for (id controller in workspaceWindowControllers) {
+    if ([[controller valueForKey:@"window"] isEqual:[NSApp keyWindow]]) {
+        workSpace = [controller valueForKey:@"_workspace"];
+    }
+}
+
+if (workSpace) {
+    workspacePath = [[workSpace valueForKey:@"representingFilePath"] valueForKey:@"_pathString"];
+}
+</code></pre>
+</div>
+
+<p>这段代码位于 BMPlugin.m 中，作用是取得当前 workspace，并读取其文件路径。</p>
+
+
+        </div>
+        
+          <p class="post-continue">
+            <a href="/2014/11/24/Black_Magic_Xcode_Plugin/">Read on &rarr;</a>
+          </p>
+        
+      </li>
+    
+      
+      
+
+      <li>
+        <header class="post-header">
+          <h1 class="post-title">
+            <a class="post-link" href="/2014/08/17/About_IAP_Receipt/">关于AppStore IAP的新旧Receipt</a>
+          </h1>
+
+          <p class="post-meta">Aug 17, 2014 • 
+  
+  
+    
+  
+    
+      <a href="/categories/ios/">iOS</a>
+    
+  
+    
+  
+    
+  
+    
+  
+
+</p>
+        </header>
+
+        <div class="post-content">
+          <p>iOS7.0后，SKPayment的property transactionReceipt变成了DEPRECATED。</p>
+
+<p>建议使用新接口来实现receipt的获取。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> [[[NSBundle mainBundle] appStoreReceiptURL] dataWithContentsOfURL:receiptURL];
+</code></pre>
+</div>
+
+<p>如果使用了IAP，Apple官方的建议是使用下列代码来处理：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>NSData *receipt = nil;
+
+if (floor(NSFoundationVersionNumber) &lt;= NSFoundationVersionNumber_iOS_6_1) {
+    // Load resources for iOS 6.1 or earlier
+    receipt = transaction.transactionReceipt;
+
+} else {
+    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+    receipt = [NSData dataWithContentsOfURL:receiptURL];
+}
+</code></pre>
+</div>
+
+<p>上面的代码很容易以为，新旧接口取得的receipt格式是一致的。其实不然。</p>
+
+
+        </div>
+        
+          <p class="post-continue">
+            <a href="/2014/08/17/About_IAP_Receipt/">Read on &rarr;</a>
+          </p>
+        
+      </li>
+    
+      
+      
+
+      <li>
+        <header class="post-header">
+          <h1 class="post-title">
+            <a class="post-link" href="/2014/08/17/U3D_iOS_Wrapper/">U3D iOS SDK Wrapper</a>
+          </h1>
+
+          <p class="post-meta">Aug 17, 2014 • 
+  
+  
+    
+  
+    
+      <a href="/categories/ios/">iOS</a>
+    
+  
+    
+  
+    
+  
+    
+  
+
+</p>
+        </header>
+
+        <div class="post-content">
+          <p>很多游戏使用U3D引擎，比如《忍者必须死》、《影之刃》… 所以，iOS NtUniSDK需要一个U3D的wrapper。</p>
+
+<p>U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层，下面给出简化的项目示例代码。</p>
+
+
+        </div>
+        
+          <p class="post-continue">
+            <a href="/2014/08/17/U3D_iOS_Wrapper/">Read on &rarr;</a>
+          </p>
+        
+      </li>
+    
+      
+      
+
+      <li>
+        <header class="post-header">
+          <h1 class="post-title">
+            <a class="post-link" href="/2014/08/14/Black_Magic_Flash_iOS_ANE/">黑魔法之 iOS Flash ANE 打包</a>
+          </h1>
+
+          <p class="post-meta">Aug 14, 2014 • 
+  
+  
+    
+  
+    
+      <a href="/categories/ios/">iOS</a>
+    
+  
+    
+  
+    
+  
+    
+  
+
+</p>
+        </header>
+
+        <div class="post-content">
+          <p>MA6-僵尸 使用Flash Air开发，故iOS SDK需包装一个Flash ANE版本。</p>
+
+<p>用到的环境有：Flash Builder 4.7、Xcode 5.1.1、iOS SDK 7.1</p>
+
+<h2>Flash Flex 项目</h2>
+
+<p>在Flash Buildder中建立一个 <strong>Flex手机项目库</strong> ，新建一个.as脚本，实现as的wrapper。
+下面给了个简化的项目示例，注意其中用于实现回调的onStatus和初始化函数NtUniSdk4Flash。</p>
+
+
+        </div>
+        
+          <p class="post-continue">
+            <a href="/2014/08/14/Black_Magic_Flash_iOS_ANE/">Read on &rarr;</a>
+          </p>
+        
+      </li>
+    
+      
+      
+
+      <li>
+        <header class="post-header">
+          <h1 class="post-title">
+            <a class="post-link" href="/2014/07/17/A_New_Blog/">A New Blog</a>
+          </h1>
+
+          <p class="post-meta">Jul 17, 2014 • 
+  
+  
+    
+      <a href="/categories/daily/">Daily</a>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+</p>
+        </header>
+
+        <div class="post-content">
+          <p>折腾了几天，先post上第一篇。</p>
+
+        </div>
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="pagination">
+    
+
+    
+      <a class="next" href="/">Newer &raquo;</a>
+    
+  </div>
+
+
+
+</div>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+&copy; Yous - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="https://wo1fsea.github.io/feed.xml">RSS</a>
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

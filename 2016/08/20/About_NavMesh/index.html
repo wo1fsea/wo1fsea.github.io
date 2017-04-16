@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>关于NavMesh，我所知道的</title>
+  <meta name="description" content="这是一篇关于NavMesh的资料整理和总结笔记。整理了前段时间收集的NavMesh相关的资料和一个简单的算法描述。 （文章出现的所有算法描述和资料均来源于互联网，绝无半点个人原创内容，请放心阅读。） Recast &amp;amp; Detour Recast &amp;amp; Detour GITHUB PAGE 是一个开源的游戏寻路引擎，被包括Unity，UE4等游戏引擎采用。">
+  <meta name="keywords" content="Recast & Detour, NavMesh, Game">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://wo1fsea.github.io/2016/08/20/About_NavMesh/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="whiteglass theme" href="https://wo1fsea.github.io/feed.xml">
+
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:title" content="关于NavMesh，我所知道的">
+  <meta name="twitter:description" content="这是一篇关于NavMesh的资料整理和总结笔记。整理了前段时间收集的NavMesh相关的资料和一个简单的算法描述。 （文章出现的所有算法描述和资料均来源于互联网，绝无半点个人原创内容，请放心阅读。） Recast &amp;amp; Detour Recast &amp;amp; Detour GITHUB PAGE 是一个开源的游戏寻路引擎，被包括Unity，UE4等游戏引擎采用。">
+  
+  
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Bitter:400,700,400italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+  
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">whiteglass theme</a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/archives/">Archives</a>
+      
+        
+        <a class="page-link" href="https://github.com/yous/whiteglass">GitHub</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">关于NavMesh，我所知道的</h1>
+    
+    <p class="post-meta"><time datetime="2016-08-20T18:37:42+00:00" itemprop="datePublished">Aug 20, 2016</time> • 
+  
+  
+    
+  
+    
+  
+    
+      <a href="/categories/game/">Game</a>
+    
+  
+    
+  
+    
+  
+
+</p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>这是一篇关于NavMesh的资料整理和总结笔记。整理了前段时间收集的NavMesh相关的资料和一个简单的算法描述。</p>
+
+<p><em>（文章出现的所有算法描述和资料均来源于互联网，绝无半点个人原创内容，请放心阅读。）</em></p>
+
+<h2>Recast &amp; Detour</h2>
+<p>Recast &amp; Detour <a href="https://github.com/recastnavigation/recastnavigation">GITHUB PAGE</a> 是一个开源的游戏寻路引擎，被包括Unity，UE4等游戏引擎采用。</p>
+
+<p><img src="/images/About_NavMesh/Image_RecastAndDetour.png" alt="Recast &amp; Detour" /></p>
+
+<!-- more -->
+
+<p>Recast &amp; Detour 包括了两部分，即 Recast 和 Detour。</p>
+
+<p>Recast 通过将输入的场景模型体素化生成相应的寻路网格。其大概包括三个步骤：1. 体素化模型；2. 分割联通区域； 3. 将区域简化为多边形</p>
+
+<p>Detour 通过使用 Recast 生成的 NavMesh 进行寻路，其包括了许多算法，根据不同路径平滑程度和寻路效率要求可做不同选择。</p>
+
+<p>该开源库的作者 Mikko Mononen 在 AiGameDev.com 有一个相关的介绍视频 <a href="http://aigamedev.com/insider/presentations/recast-teaser/">Building and Traversing Navigation Meshes with Recast and Detour (Project Video)</a>。</p>
+
+<p>Mikko Mononen 在该文章 References 部分贴出了一系列相关的参考文献。</p>
+
+<ul>
+  <li>
+    <p><strong>Conservative Voxelization</strong>
+Long Zhang, Wei Chen, David S. Ebert, Qunsheng Peng
+<a href="/files/About_NavMesh/P1_Conservative_voxelization.pdf">PDF</a></p>
+  </li>
+  <li>
+    <p><strong>Real-time Voxelization for Complex Polygonal Models</strong>
+Zhao Dong, Wei Chen, Hujun Bao, Hongxin Zhang, Qunsheng Peng
+<a href="/files/About_NavMesh/P2_Real-time_Voxelization_for_Complex_Models.pdf">PDF</a></p>
+  </li>
+  <li>
+    <p><strong>Single-pass GPU Solid Voxelization and Applications</strong>
+Elmar Eisemann, Xavier Décoret
+<a href="/files/About_NavMesh/P3_Single-Pass_GPU_Solid_Voxelization_for_Real-Time_Applications.pdf">PDF</a></p>
+  </li>
+  <li>
+    <p><strong>GPU Gems 2: Flow Simulation with Complex Boundaries</strong>
+Wei Li, Zhe Fan, Xiaoming Wei, Arie Kaufman
+<a href="/files/About_NavMesh/P4_GPU_Gems_2_Chapter_47_Flow_Simulation_with_Complex_Boundaries.pdf">PDF</a></p>
+  </li>
+  <li>
+    <p><strong>GPU Gems 3: Real-Time Simulation and Rendering of 3D Fluids</strong>
+Keenan Crane, Ignacio Llamas, Sarah Tariq
+<a href="/files/About_NavMesh/P5_GPU_Gems_3_Real-Time_Simulation_and_Rendering_of_3D_Fluids.pdf">PDF</a></p>
+  </li>
+  <li>
+    <p><strong>Way-Finder: guided tours through complex walkthrough models</strong>
+C. Andújar, P. Vázquez, M. Fairén
+<a href="/files/About_NavMesh/P6_Way-Finder_guided_tours_through_complex_walkthrough_models.pdf">PDF</a></p>
+  </li>
+  <li>
+    <p><strong>Volumetric Cell-and-Portal Generation</strong>
+Denis Haumont, Olivier Debeir, François Sillion
+<a href="/files/About_NavMesh/P7_Volumetric_cell-and-portal_generation.pdf">PDF</a></p>
+  </li>
+  <li>
+    <p><strong>Skeleton Extraction of 3D Objects with Visible Repulsive Force</strong>
+Fu-Che Wu, Wan-Chun Ma, Ping-Chou Liou, Rung-Huei Liang, Ming Ouhyoung
+<a href="/files/About_NavMesh/P8_Skeleton_Extraction_of 3D_Objects_with_Visible_Repulsive_Force.pdf">PDF</a></p>
+  </li>
+  <li>
+    <p><strong>Automated Static and Dynamic Obstacle Avoidance in Arbitrary 3D Polygonal Worlds</strong>
+Edited by Xing-Jian Jing
+<a href="/files/About_NavMesh/P9_Automated_Static_and Dynamic_ObstacleAvoidance_in_Arbitrary_3D_Polygonal_Worlds.pdf">PDF</a></p>
+  </li>
+  <li>
+    <p><strong>A Navigation Graph for Real-time Crowd Animation on Multilayered and Uneven Terrain</strong>
+Julien Pettré, Jean-Paul Laumond, Daniel Thalmann
+<a href="/files/About_NavMesh/P10_A_navigation_graph_for_real-time_crowd_animation_on_multilayered_and_uneven_terrain.pdf">PDF</a></p>
+  </li>
+  <li>
+    <p><strong>Pedestrian Reactive Navigation for Crowd Simulation: a Predictive Approach</strong>
+Sébastien Paris, Julien Pettré, Stéphane Donikian
+<a href="/files/About_NavMesh/P11_Pedestrian_Reactive_Navigation_for_Crowd_Pedestrian_Reactive_Navigation_for_Crowd_Simulation_a_Predictive_Approach.pdf">PDF</a></p>
+  </li>
+</ul>
+
+<h2>Study: Navigation Mesh Generation</h2>
+<p>Stephen Pratt 在其项目 <a href="http://www.critterai.org/projects/nmgen_study/index.html">《Study: Navigation Mesh Generation》</a> 中提供了一个 Java 版本的 Recast 实现，并在文档中对算法细节及参数进行了详细的讨论。</p>
+
+<p><img src="/images/About_NavMesh/Image_NavigationMeshGeneration.png" alt="Study: Navigation Mesh Generation" /></p>
+
+<p>其中，</p>
+
+<ul>
+  <li><a href="http://www.critterai.org/projects/nmgen_study/diffs.html">《Differences Between NMGen and Recast》</a>描述了其实现与 Recast &amp; Detour 项目的异同之处；</li>
+  <li><a href="http://www.critterai.org/projects/nmgen_study/config.html">《Configuration Parameters》</a>罗列了算法中各参数对生成寻路网格数据的影响。</li>
+</ul>
+
+<h2>Crowds In A Polygon Soup: Next-Gen Path Planning</h2>
+<p>Mikko Mononen 在 Recast &amp; Detour 中生成NavMesh的基本流程受到 GDC2006 上演讲<a href="http://gdcvault.com/play/1013192/Crowds-In-A-Polygon-Soup">《Crowds In A Polygon Soup: Next-Gen Path Planning》</a>的启发。</p>
+
+<ul>
+  <li>
+    <p><strong>Session:  Crowds In A Polygon Soup: Next-Gen Path Planning</strong>
+By David Miles, David Miles, David Miles, David Miles</p>
+
+    <ul>
+      <li><a href="/files/About_NavMesh/GDC-06-038.mp3">Session mp3</a></li>
+      <li><a href="/files/About_NavMesh/gdc2006_miles_david_pathplanning.ppt">Session ppt</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2>谷阿莫带你十分钟看完 NavMesh 生成算法</h2>
+<p>没有时间看完上面资料的同学可以看下面这个《谷阿莫带你十分钟看完 NavMesh 生成算法》的小抄。</p>
+
+<p><img src="/images/About_NavMesh/Image[1].png" alt="谷阿莫带你十分钟看完 NavMesh 生成算法" /></p>
+
+<p><a href="/2016/08/21/A_Quick_Introduction_to_NavMesh/">谷阿莫带你十分钟看完 NavMesh 生成算法</a></p>
+
+  </div>
+
+</article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+&copy; Yous - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="https://wo1fsea.github.io/feed.xml">RSS</a>
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

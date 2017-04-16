@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>黑魔法之 iOS Flash ANE 打包</title>
+  <meta name="description" content="MA6-僵尸 使用Flash Air开发，故iOS SDK需包装一个Flash ANE版本。 用到的环境有：Flash Builder 4.7、Xcode 5.1.1、iOS SDK 7.1 Flash Flex 项目 在Flash Buildder中建立一个 Flex手机项目库 ，新建一个.as脚本，实现as的wrapper。 下面给了个简化的项目示例，注意其中用于实现回调的onStatus和初始化函数NtUniSdk4Flash。">
+  <meta name="keywords" content="iOS, SDK, Flash, ANE">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://wo1fsea.github.io/2014/08/14/Black_Magic_Flash_iOS_ANE/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="whiteglass theme" href="https://wo1fsea.github.io/feed.xml">
+
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:title" content="黑魔法之 iOS Flash ANE 打包">
+  <meta name="twitter:description" content="MA6-僵尸 使用Flash Air开发，故iOS SDK需包装一个Flash ANE版本。 用到的环境有：Flash Builder 4.7、Xcode 5.1.1、iOS SDK 7.1 Flash Flex 项目 在Flash Buildder中建立一个 Flex手机项目库 ，新建一个.as脚本，实现as的wrapper。 下面给了个简化的项目示例，注意其中用于实现回调的onStatu...">
+  
+  
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Bitter:400,700,400italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+  
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">whiteglass theme</a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/archives/">Archives</a>
+      
+        
+        <a class="page-link" href="https://github.com/yous/whiteglass">GitHub</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">黑魔法之 iOS Flash ANE 打包</h1>
+    
+    <p class="post-meta"><time datetime="2014-08-14T18:09:46+00:00" itemprop="datePublished">Aug 14, 2014</time> • 
+  
+  
+    
+  
+    
+      <a href="/categories/ios/">iOS</a>
+    
+  
+    
+  
+    
+  
+    
+  
+
+</p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>MA6-僵尸 使用Flash Air开发，故iOS SDK需包装一个Flash ANE版本。</p>
+
+<p>用到的环境有：Flash Builder 4.7、Xcode 5.1.1、iOS SDK 7.1</p>
+
+<h2>Flash Flex 项目</h2>
+
+<p>在Flash Buildder中建立一个 <strong>Flex手机项目库</strong> ，新建一个.as脚本，实现as的wrapper。
+下面给了个简化的项目示例，注意其中用于实现回调的onStatus和初始化函数NtUniSdk4Flash。</p>
+
+<p><!-- more --></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>package com.netease.ntunisdk
+{
+	import flash.events.EventDispatcher;
+	import flash.events.StatusEvent;
+	import flash.external.ExtensionContext;
+
+	public class NtUniSdk4Flash extends EventDispatcher
+	{
+		private static var _instance:NtUniSdk4Flash;
+		private var extContext:ExtensionContext;
+
+		public function ntInit():void
+		{
+			extContext.call( "__NtSdkMgr_ntInit" );
+		}
+
+		public static function get instance():NtUniSdk4Flash {
+			if ( !_instance ) {
+				_instance = new NtUniSdk4Flash( new SingletonEnforcer() );
+			}
+			return _instance;
+		}
+
+		public function dispose():void {
+			extContext.dispose();
+		}
+
+		private function onStatus( event:StatusEvent ):void {
+			dispatchEvent( new SDKNotification(event.code, false, false) );
+		}
+
+
+		/**
+	 	* Constructor.
+	 	*/		
+		public function NtUniSdk4Flash( enforcer:SingletonEnforcer ) {
+			super();
+
+			extContext = ExtensionContext.createExtensionContext( "com.netease.ntunisdk.ios.ane", "" );
+
+			if ( !extContext ) {
+				throw new Error( "iOS NtUniSdk native extension is not supported on this platform." );
+			}
+
+			extContext.addEventListener( StatusEvent.STATUS, onStatus );
+		}
+	}
+}
+
+class SingletonEnforcer {
+
+}
+</code></pre>
+</div>
+
+<p>然后需要再建立一个extension.xml，示例再如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;extension xmlns="http://ns.adobe.com/air/extension/3.1"&gt;
+	&lt;id&gt;com.netease.ntunisdk.ios.ane&lt;/id&gt;
+	&lt;versionNumber&gt;0.0.1&lt;/versionNumber&gt;
+	&lt;platforms&gt;  
+		&lt;platform name="iPhone-ARM"&gt;
+        	&lt;applicationDeployment&gt;
+            	&lt;nativeLibrary&gt;liblibNtUniSdk4Flash.a&lt;/nativeLibrary&gt;
+            	&lt;initializer&gt;ExtInitializer&lt;/initializer&gt;
+        	&lt;/applicationDeployment&gt;
+    	&lt;/platform&gt;
+	&lt;/platforms&gt;
+&lt;/extension&gt;
+</code></pre>
+</div>
+
+<p>因为我们需要的只是iphone版本的ANE，所以只有iPhone-ARM一个平台。com.netease.ntunisdk.ios.ane和上面as代码中的ExtensionContext.createExtensionContext参数是对应的。</p>
+
+<p>然后，在菜单里，选择 项目 -&gt; 构建项目，编译项目。如果你的构建项目事灰色的，那是打开了自动构建。把 项目 -&gt; 自动构建 取消掉。</p>
+
+<p>这时候，可以等到 <strong>产出1. 一个.swc文件</strong> 。</p>
+
+<h2>Xcode 静态库项目</h2>
+
+<p>建立一个Coco Touch Static Library, 在Air SDK里找到 FlashRuntimeExtensions.h，添加到项目中。</p>
+
+<p>新建一个.m文件，下面给出项目简化版的示例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+//  libNtUniSdk4Flash.m
+//  libNtUniSdk4Flash
+//
+//  Created by Huang Quanyong on 14-8-7.
+//  Copyright (c) 2014年 Stupid Dumb Kids. All rights reserved.
+//
+</span>
+<span class="cp">#import "FlashRuntimeExtensions.h"
+#import "UniHead.h"
+</span>
+<span class="cp">#define STRING_BUFFER_SIZE 1024*128
+</span>
+<span class="k">@interface</span> <span class="nc">__NtNotificationWrapper</span> <span class="p">:</span> <span class="nc">NSObject</span>
+
+<span class="k">@end</span>
+<span class="k">static</span> <span class="n">__NtNotificationWrapper</span> <span class="o">*</span><span class="n">__inst</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">FREContext</span> <span class="n">__context</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+<span class="k">@implementation</span> <span class="nc">__NtNotificationWrapper</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">initialize</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">__inst</span><span class="p">)</span> <span class="p">{</span>
+    	<span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+</code></pre>
+</div>
+
+   		__inst = [[__NtNotificationWrapper alloc] init];
+
+<div class="highlighter-rouge"><pre class="highlight"><code>	<span class="c1">//初始化通知
+</span>	<span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="nf">defaultCenter</span><span class="p">]</span> <span class="nf">addObserver</span><span class="p">:</span><span class="n">__inst</span> <span class="nf">selector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">finishInitNotification</span><span class="o">:</span><span class="p">)</span> <span class="n">name</span><span class="o">:</span><span class="n">NT_NOTIFICATION_FINISH_INIT</span> <span class="n">object</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+
+<span class="p">}</span>
+
+<span class="c1">//初始化完成处理
+</span><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">finishInitNotification</span><span class="o">:</span><span class="p">(</span><span class="n">NSNotification</span> <span class="o">*</span><span class="p">)</span><span class="n">notification</span>
+<span class="p">{</span>
+   		<span class="n">NSString</span><span class="o">*</span> <span class="n">str</span> <span class="o">=</span> <span class="n">NT_NOTIFICATION_FINISH_INIT</span><span class="p">;</span>
+	<span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">code</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span> <span class="p">[</span><span class="n">str</span> <span class="nf">UTF8String</span><span class="p">];</span>
+	<span class="n">FREDispatchStatusEventAsync</span><span class="p">(</span><span class="n">__context</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">code</span><span class="p">);</span>
+	<span class="n">NSLog</span><span class="p">(</span><span class="s">@"[NtUniSdk] Notification finishInit."</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">doNothing</span><span class="p">{}</span>
+
+<span class="k">@end</span>
+
+<span class="n">FREObject</span> <span class="n">__NtSdkMgr_ntInit</span><span class="p">(</span><span class="n">FREContext</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">funcData</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">argc</span><span class="p">,</span> <span class="n">FREObject</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="n">NSLog</span><span class="p">(</span><span class="s">@"[NtUniSdk] __NtSdkMgr_ntInit"</span><span class="p">);</span>
+	<span class="p">[</span><span class="n">__NtNotificationWrapper</span> <span class="nf">doNothing</span><span class="p">];</span>
+	<span class="p">[</span><span class="n">NtSdkMgr</span> <span class="nf">ntInit</span><span class="p">];</span>
+	<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// InitNativeCode()
+//
+// An InitNativeCode function is necessary in the Android implementation of this extension.
+// Therefore, an analogous function is necessary in the iOS implementation to make
+// the ActionScript interface identical for all implementations.
+// However, the iOS implementation has nothing to do.
+</span><span class="n">FREObject</span> <span class="n">InitNativeCode</span><span class="p">(</span><span class="n">FREContext</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">funcData</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">argc</span><span class="p">,</span> <span class="n">FREObject</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+	<span class="n">NSLog</span><span class="p">(</span><span class="s">@"Entering InitNativeCode()"</span><span class="p">);</span>
+
+	<span class="c1">// Nothing to do.
+</span>
+	<span class="n">NSLog</span><span class="p">(</span><span class="s">@"Exiting InitNativeCode()"</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ContextInitializer()
+//
+// The context initializer is called when the runtime creates the extension context instance.
+</span>
+<span class="kt">void</span> <span class="n">ContextInitializer</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">extData</span><span class="p">,</span> <span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">ctxType</span><span class="p">,</span> <span class="n">FREContext</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">uint32_t</span><span class="o">*</span> <span class="n">numFunctionsToTest</span><span class="p">,</span> <span class="k">const</span> <span class="n">FRENamedFunction</span><span class="o">**</span> <span class="n">functionsToSet</span><span class="p">)</span> <span class="p">{</span>
+
+	<span class="n">NSLog</span><span class="p">(</span><span class="s">@"Entering ContextInitializer()"</span><span class="p">);</span>
+
+	<span class="n">__context</span> <span class="o">=</span> <span class="n">ctx</span><span class="p">;</span>
+
+	<span class="o">*</span><span class="n">numFunctionsToTest</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span>
+	<span class="n">FRENamedFunction</span><span class="o">*</span> <span class="n">func</span> <span class="o">=</span> <span class="p">(</span><span class="n">FRENamedFunction</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">FRENamedFunction</span><span class="p">)</span> <span class="o">*</span> <span class="o">*</span><span class="n">numFunctionsToTest</span><span class="p">);</span>
+
+	<span class="c1">//Just for consistency with Android
+</span>	<span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">name</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span> <span class="s">"__NtSdkMgr_ntInit"</span><span class="p">;</span>
+	<span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">functionData</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">function</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">__NtSdkMgr_ntInit</span><span class="p">;</span>
+
+	<span class="o">*</span><span class="n">functionsToSet</span> <span class="o">=</span> <span class="n">func</span><span class="p">;</span>
+
+	<span class="n">NSLog</span><span class="p">(</span><span class="s">@"Exiting ContextInitializer()"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ContextFinalizer()
+//
+// The context finalizer is called when the extension's ActionScript code
+// calls the ExtensionContext instance's dispose() method.
+// If the AIR runtime garbage collector disposes of the ExtensionContext instance, the runtime also calls
+// ContextFinalizer().
+</span>
+<span class="kt">void</span> <span class="n">ContextFinalizer</span><span class="p">(</span><span class="n">FREContext</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+</code></pre>
+</div>
+
+   	 	NSLog(@”Entering ContextFinalizer()”);
+
+<div class="highlighter-rouge"><pre class="highlight"><code>	// Nothing to clean up.
+
+	NSLog(@"Exiting ContextFinalizer()");
+
+	return;
+}
+
+// ExtInitializer()
+//
+// The extension initializer is called the first time the ActionScript side of the extension
+// calls ExtensionContext.createExtensionContext() for any context.
+
+void ExtInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet) {
+
+	NSLog(@"Entering ExtInitializer()");
+
+	*extDataToSet = NULL;
+	*ctxInitializerToSet = &amp;ContextInitializer;
+	*ctxFinalizerToSet = &amp;ContextFinalizer;
+
+	NSLog(@"Exiting ExtInitializer()");
+}
+
+// ExtFinalizer()
+//
+// The extension finalizer is called when the runtime unloads the extension. However, it is not always called.
+
+void ExtFinalizer(void* extData) {
+
+	NSLog(@"Entering ExtFinalizer()");
+
+	// Nothing to clean up.
+
+	NSLog(@"Exiting ExtFinalizer()");
+	return;
+}
+</code></pre>
+</div>
+
+<p>注意中间消息的回调实现，调用FREDispatchStatusEventAsync，会触发as里的onStatus。</p>
+
+<p>编译该项目，得到 <strong>产出2.一个.a文件</strong> ，即是extension.xml中的</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;nativeLibrary&gt;liblibNtUniSdk4Flash.a&lt;/nativeLibrary&gt;
+</code></pre>
+</div>
+
+<h2>编译ANE</h2>
+
+<p>编译ANE的过程简直就是黑魔法。</p>
+
+<p>建立一个platform.xml，写入库依赖连接信息，以iTools SDK为例。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;platform xmlns="http://ns.adobe.com/air/extension/3.1"&gt;
+	&lt;description&gt;An optional description.&lt;/description&gt;
+	&lt;copyright&gt;2011 (optional)&lt;/copyright&gt;
+	&lt;sdkVersion&gt;5.0.0&lt;/sdkVersion&gt;
+	&lt;linkerOptions&gt;
+    	&lt;option&gt;-ios_version_min 5.0&lt;/option&gt;
+    	&lt;option&gt;-framework AdSupport&lt;/option&gt;
+    	&lt;option&gt;-framework SystemConfiguration&lt;/option&gt;
+    	&lt;option&gt;-framework CFNetwork&lt;/option&gt;
+    	&lt;option&gt;-framework Security&lt;/option&gt;
+    	&lt;option&gt;-framework MobileCoreServices&lt;/option&gt;
+    	&lt;option&gt;-framework QuartzCore&lt;/option&gt;
+    	&lt;option&gt;-framework CoreTelephony&lt;/option&gt;
+
+    	&lt;option&gt;-framework StoreKit&lt;/option&gt;
+    	&lt;option&gt;-framework NtUniSdkiTools&lt;/option&gt;
+
+    	&lt;option&gt;-lc /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libz.dylib&lt;/option&gt;
+	&lt;/linkerOptions&gt;
+&lt;/platform&gt;
+</code></pre>
+</div>
+
+<p>把产出1的.swc文件，后缀改为.zip，解压，得到catalog.xml和library.swf。</p>
+
+<p>建立一个文件夹，命名为iPhone-ARM，放入三个文件，上一步所得的catalog.xml和library.swf、产出1.的.a文件。</p>
+
+<p>新建一个目录，放入如下：</p>
+
+<ul>
+  <li>上文的iPhone-ARM文件夹</li>
+  <li>上文的platform.xml</li>
+  <li>上文的extension.xml</li>
+  <li>产出1.的NtUniSdk4Flash.swc</li>
+  <li>developer_identity.p12 用于签名的证书，密码为111111 (没有的话，可是用Flash Builder生成，请看后面步骤)</li>
+</ul>
+
+<p>用以下指令编译ANE：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"/Applications/Adobe Flash Builder 4.7/sdks/4.6.0/bin/adt" \
+	-package -storetype pkcs12 -keystore developer_identity.p12 -storepass 111111 \
+	-target com.netease.ntunisdk.ios.ane extension.xml -swc NtUniSdk4Flash.swc -platform iPhone-ARM -C iPhone-ARM  -platformoptions platform.xml  .
+</code></pre>
+</div>
+
+<p>然后，你就生成了一个可用的ANE文件。</p>
+
+<blockquote>
+  <p>没有developer_identity.p12证书</p>
+</blockquote>
+
+<blockquote>
+  <p>请新建一个Flex手机工程，在工程上点击右键，选择属性，并选择 Flex构建打包 -&gt; Apple iOS，在右边选择 数字签名 -&gt; 创建，即可创建一个可用的数字签名证书。</p>
+</blockquote>
+
+  </div>
+
+</article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+&copy; Yous - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="https://wo1fsea.github.io/feed.xml">RSS</a>
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

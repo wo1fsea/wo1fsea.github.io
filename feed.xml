@@ -5,7 +5,7 @@
   
   <link href="https://wo1fsea.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://wo1fsea.github.io/" rel="alternate" type="text/html" hreflang="zh-CN" />
-  <updated>2017-04-16T07:40:34+00:00</updated>
+  <updated>2017-04-16T08:10:34+00:00</updated>
   <id>https://wo1fsea.github.io//</id>
 
   
@@ -24,6 +24,345 @@
     </author>
   
 
+  
+  
+    <entry>
+      
+      <title type="html">生存技能 01. Markdown &amp;amp; LaTex Formulas</title>
+      
+      <link href="https://wo1fsea.github.io/2016/11/26/Survival_Skill_Markdown_and_LaTex_Formulas/" rel="alternate" type="text/html" title="生存技能 01. Markdown &amp; LaTex Formulas" />
+      <published>2016-11-26T16:21:11+00:00</published>
+      <updated>2016-11-26T16:21:11+00:00</updated>
+      <id>https://wo1fsea.github.io/2016/11/26/Survival_Skill_Markdown_and_LaTex_Formulas</id>
+      <content type="html" xml:base="https://wo1fsea.github.io/2016/11/26/Survival_Skill_Markdown_and_LaTex_Formulas/">&lt;p&gt;做笔记写文档最恼人的，可能就是文档标题格式字体字号等等的设置了。所幸用 Markdown 之后，都不用怎么考虑这些细节问题。然而，偶然读书遇到公式，想要记录下来还是挺麻烦的。最好的方法可能是截图，但是还是有格式不一致，不能二次编辑等等问题。这两天发现 atom 的 MPP 插件居然支持 LaTex 的公式编辑和渲染，再配合 google api 的 LaTex 公式渲染，正好解决了这个困扰已久的问题。&lt;/p&gt;
+
+&lt;p&gt;恰好最近正在反思，自己平时看书翻资料时间花不少，但记录总结的却不多。正好借机培养下习惯，从一些基础的东西开始整理。掌握这些工具，怎么看都是生存技能，所以这篇叫《生存技能 01. Markdown &amp;amp; LaTex Formulas》，从用 Markdown 和 LaTex 开始。&lt;/p&gt;
+
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;## Markdown&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。[4]这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。 – wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;更具体的介绍可见 &lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot;&gt;Markdown官方主页&lt;/a&gt; 。&lt;/p&gt;
+
+&lt;p&gt;下面列出 Markdown 语法的基本元素。&lt;/p&gt;
+
+&lt;h3&gt;标题&lt;/h3&gt;
+
+&lt;p&gt;Markdown 标题可以选用下列两种风格：&lt;/p&gt;
+
+&lt;p&gt;风格1:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;标题一
+===
+
+标题二
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;或者，风格2，由1到6个#开头的标题形式：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 标题一
+
+## 标题二
+
+###### 标题六
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;引用&lt;/h3&gt;
+
+&lt;p&gt;Markdown 引用使用 &amp;gt; 符号作为行起始字符，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; 引用
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;多行引用可写作：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; 引用行1
+引用行2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;或：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; 引用行1
+&amp;gt; 引用行2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;列表&lt;/h3&gt;
+
+&lt;p&gt;无序列表写作：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* a
+* b
+* c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;或：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+ a
++ b
++ c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;或：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- a
+- b
+- c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;有序列表：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. a
+2. b
+3. c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;或：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. a
+1. b
+1. c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;表格&lt;/h3&gt;
+
+&lt;p&gt;在 Markdown 中使用如下格式：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|h1  |h2  |h3  |
+|:---|:--:|---:|
+|v1  |v2  |v3  |
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;将生成下列表格：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;h1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;h2&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;h3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;v1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;v2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;v3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;代码块&lt;/h3&gt;
+
+&lt;p&gt;Markdown 中缩进一个字表符或者4个空格表示一个代码块：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;这是文章。
+    这是代码块。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;或者使用&lt;/p&gt;
+
+&lt;h3&gt;分割线&lt;/h3&gt;
+
+&lt;p&gt;单行使用三个以上的下划线，星号，减号可以生成一个分割线。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* * *
+
+***
+
+*****
+
+- - -
+
+---------------------------------------
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;图片&lt;/h3&gt;
+
+&lt;p&gt;使用下列方式可插入图片：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;![图片描述](图片地址)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;链接&lt;/h3&gt;
+
+&lt;p&gt;使用下列方式可插入链接：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[链接描述](链接地址)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;强调&lt;/h3&gt;
+
+&lt;p&gt;在 Markdown 中，使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;*斜体*&lt;/code&gt; 表示 &lt;em&gt;斜体&lt;/em&gt;，使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;**粗体**&lt;/code&gt; 表示 &lt;strong&gt;粗体&lt;/strong&gt; 。&lt;/p&gt;
+
+&lt;h2&gt;LaTex 公式&lt;/h2&gt;
+
+&lt;h3&gt;上下标&lt;/h3&gt;
+
+&lt;p&gt;在 LaTex 中，使用 ^ 表示上标， _ 表示下标。&lt;/p&gt;
+
+&lt;p&gt;例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\[ E=mc^2 \]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;表示&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=E=mc^2&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3&gt;根式与分式&lt;/h3&gt;
+
+&lt;p&gt;根式用\sqrt{·}来表示，分式用\frac{·}{·}来表示（第一个参数为分子，第二个为分母）。&lt;/p&gt;
+
+&lt;p&gt;例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\[ \Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a} \]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;表示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3&gt;运算符&lt;/h3&gt;
+
+&lt;p&gt;下列运算符分别表示：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\[ \pm\; \times \; \div\; \cdot\; \cap\; \cup\; \geq\; \leq\; \neq\; \approx\; \equiv\; \sum\; \prod\; \lim\; \int\; \]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=\pm\; \times \; \div\; \cdot\; \cap\; \cup\; \geq\; \leq\; \neq\; \approx\; \equiv\; \sum\; \prod\; \lim\; \int\;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3&gt;分隔符&lt;/h3&gt;
+
+&lt;p&gt;各种括号可使用 \big, \Big, \bigg, \Bigg 调整大小。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\[ \Bigg[\bigg[\Big[\big[[x]\big]\Big]\bigg]\Bigg] \]
+\[ \Bigg\{\bigg\{\Big\{\big\{\{x\}\big\}\Big\}\bigg\}\Bigg\} \]
+\[ \Bigg\langle\bigg\langle\Big\langle\big\langle\langle{x}\rangle\big\rangle\Big\rangle\bigg\rangle\Bigg\rangle \]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=\Bigg(\bigg(\Big(\big((x)\big)\Big)\bigg)\Bigg)&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=\Bigg\{\bigg\{\Big\{\big\{\{x\}\big\}\Big\}\bigg\}\Bigg\}&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=\Bigg\langle\bigg\langle\Big\langle\big\langle\langle{x}\rangle\big\rangle\Big\rangle\bigg\rangle\Bigg\rangle&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3&gt;省略号&lt;/h3&gt;
+
+&lt;p&gt;省略号有以下的表示：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\[ x_1,x_2,\dots,x_n \quad 1,2,\cdots,n \quad \vdots \quad \ddots \]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=x_1,x_2,\dots,x_n \quad 1,2,\cdots,n \quad \vdots \quad \ddots&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3&gt;矩阵&lt;/h3&gt;
+
+&lt;p&gt;有下列形式的矩阵描述：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\[ \begin{pmatrix} a&amp;amp;b\\c&amp;amp;d \end{pmatrix} \quad
+\begin{bmatrix} a&amp;amp;b\\c&amp;amp;d \end{bmatrix} \quad
+\begin{Bmatrix} a&amp;amp;b\\c&amp;amp;d \end{Bmatrix} \quad
+\begin{vmatrix} a&amp;amp;b\\c&amp;amp;d \end{vmatrix} \quad
+\begin{Vmatrix} a&amp;amp;b\\c&amp;amp;d \end{Vmatrix} \]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=\begin{pmatrix} a%26b\\c%26d \end{pmatrix}&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=\begin{bmatrix} a%26b\\c%26d \end{bmatrix}&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=\begin{Bmatrix} a%26b\\c%26d \end{Bmatrix}&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=\begin{vmatrix} a%26b\\c%26d \end{vmatrix}&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=\begin{Vmatrix} a%26b\\c%26d \end{Vmatrix}&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3&gt;分段函数&lt;/h3&gt;
+
+&lt;p&gt;分段函数可以用 cases 来实现。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\[ y=\begin{cases}
+-x,\quad x\leq 0 \\
+x,\quad x&amp;gt;0
+\end{cases} \]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=y=\begin{cases} -x,\quad x\leq 0 \\x,\quad x&amp;gt;0\end{cases}&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3&gt;更多&lt;/h3&gt;
+
+&lt;p&gt;详细的 LaTex 数学公式入门教程可参考 Michael Downes 的&lt;a href=&quot;/files/LaTex/short_math_guide.pdf&quot;&gt;Short Math Guide for LaTex&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2&gt;将 LaTex 公式转换为图片&lt;/h2&gt;
+
+&lt;p&gt;使用 google chart api 可以生成 LaTex 公式图片，接口如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=这里填写LaTex公式
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;结果为：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;amp;chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;需要注意的是在 url 中填入的公式中需要处理好 &lt;em&gt;&amp;amp;&lt;/em&gt; 等字符的转换。&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>Yous</name>
+          
+          
+        </author>
+      
+
+      
+        <category term="Survival" />
+      
+        <category term="Skill" />
+      
+
+      
+
+      
+        <summary type="html">做笔记写文档最恼人的，可能就是文档标题格式字体字号等等的设置了。所幸用 Markdown 之后，都不用怎么考虑这些细节问题。然而，偶然读书遇到公式，想要记录下来还是挺麻烦的。最好的方法可能是截图，但是还是有格式不一致，不能二次编辑等等问题。这两天发现 atom 的 MPP 插件居然支持 LaTex 的公式编辑和渲染，再配合 google api 的 LaTex 公式渲染，正好解决了这个困扰已久的问题。 恰好最近正在反思，自己平时看书翻资料时间花不少，但记录总结的却不多。正好借机培养下习惯，从一些基础的东西开始整理。掌握这些工具，怎么看都是生存技能，所以这篇叫《生存技能 01. Markdown &amp;amp; LaTex Formulas》，从用 Markdown 和 LaTex 开始。</summary>
+      
+
+      
+      
+    </entry>
+  
   
   
     <entry>
@@ -203,6 +542,157 @@
   
     <entry>
       
+      <title type="html">关于NavMesh，我所知道的</title>
+      
+      <link href="https://wo1fsea.github.io/2016/08/20/About_NavMesh/" rel="alternate" type="text/html" title="关于NavMesh，我所知道的" />
+      <published>2016-08-20T18:37:42+00:00</published>
+      <updated>2016-08-20T18:37:42+00:00</updated>
+      <id>https://wo1fsea.github.io/2016/08/20/About_NavMesh</id>
+      <content type="html" xml:base="https://wo1fsea.github.io/2016/08/20/About_NavMesh/">&lt;p&gt;这是一篇关于NavMesh的资料整理和总结笔记。整理了前段时间收集的NavMesh相关的资料和一个简单的算法描述。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;（文章出现的所有算法描述和资料均来源于互联网，绝无半点个人原创内容，请放心阅读。）&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2&gt;Recast &amp;amp; Detour&lt;/h2&gt;
+&lt;p&gt;Recast &amp;amp; Detour &lt;a href=&quot;https://github.com/recastnavigation/recastnavigation&quot;&gt;GITHUB PAGE&lt;/a&gt; 是一个开源的游戏寻路引擎，被包括Unity，UE4等游戏引擎采用。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image_RecastAndDetour.png&quot; alt=&quot;Recast &amp;amp; Detour&quot; /&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Recast &amp;amp; Detour 包括了两部分，即 Recast 和 Detour。&lt;/p&gt;
+
+&lt;p&gt;Recast 通过将输入的场景模型体素化生成相应的寻路网格。其大概包括三个步骤：1. 体素化模型；2. 分割联通区域； 3. 将区域简化为多边形&lt;/p&gt;
+
+&lt;p&gt;Detour 通过使用 Recast 生成的 NavMesh 进行寻路，其包括了许多算法，根据不同路径平滑程度和寻路效率要求可做不同选择。&lt;/p&gt;
+
+&lt;p&gt;该开源库的作者 Mikko Mononen 在 AiGameDev.com 有一个相关的介绍视频 &lt;a href=&quot;http://aigamedev.com/insider/presentations/recast-teaser/&quot;&gt;Building and Traversing Navigation Meshes with Recast and Detour (Project Video)&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;Mikko Mononen 在该文章 References 部分贴出了一系列相关的参考文献。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Conservative Voxelization&lt;/strong&gt;
+Long Zhang, Wei Chen, David S. Ebert, Qunsheng Peng
+&lt;a href=&quot;/files/About_NavMesh/P1_Conservative_voxelization.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Real-time Voxelization for Complex Polygonal Models&lt;/strong&gt;
+Zhao Dong, Wei Chen, Hujun Bao, Hongxin Zhang, Qunsheng Peng
+&lt;a href=&quot;/files/About_NavMesh/P2_Real-time_Voxelization_for_Complex_Models.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Single-pass GPU Solid Voxelization and Applications&lt;/strong&gt;
+Elmar Eisemann, Xavier Décoret
+&lt;a href=&quot;/files/About_NavMesh/P3_Single-Pass_GPU_Solid_Voxelization_for_Real-Time_Applications.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;GPU Gems 2: Flow Simulation with Complex Boundaries&lt;/strong&gt;
+Wei Li, Zhe Fan, Xiaoming Wei, Arie Kaufman
+&lt;a href=&quot;/files/About_NavMesh/P4_GPU_Gems_2_Chapter_47_Flow_Simulation_with_Complex_Boundaries.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;GPU Gems 3: Real-Time Simulation and Rendering of 3D Fluids&lt;/strong&gt;
+Keenan Crane, Ignacio Llamas, Sarah Tariq
+&lt;a href=&quot;/files/About_NavMesh/P5_GPU_Gems_3_Real-Time_Simulation_and_Rendering_of_3D_Fluids.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Way-Finder: guided tours through complex walkthrough models&lt;/strong&gt;
+C. Andújar, P. Vázquez, M. Fairén
+&lt;a href=&quot;/files/About_NavMesh/P6_Way-Finder_guided_tours_through_complex_walkthrough_models.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Volumetric Cell-and-Portal Generation&lt;/strong&gt;
+Denis Haumont, Olivier Debeir, François Sillion
+&lt;a href=&quot;/files/About_NavMesh/P7_Volumetric_cell-and-portal_generation.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Skeleton Extraction of 3D Objects with Visible Repulsive Force&lt;/strong&gt;
+Fu-Che Wu, Wan-Chun Ma, Ping-Chou Liou, Rung-Huei Liang, Ming Ouhyoung
+&lt;a href=&quot;/files/About_NavMesh/P8_Skeleton_Extraction_of 3D_Objects_with_Visible_Repulsive_Force.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Automated Static and Dynamic Obstacle Avoidance in Arbitrary 3D Polygonal Worlds&lt;/strong&gt;
+Edited by Xing-Jian Jing
+&lt;a href=&quot;/files/About_NavMesh/P9_Automated_Static_and Dynamic_ObstacleAvoidance_in_Arbitrary_3D_Polygonal_Worlds.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;A Navigation Graph for Real-time Crowd Animation on Multilayered and Uneven Terrain&lt;/strong&gt;
+Julien Pettré, Jean-Paul Laumond, Daniel Thalmann
+&lt;a href=&quot;/files/About_NavMesh/P10_A_navigation_graph_for_real-time_crowd_animation_on_multilayered_and_uneven_terrain.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Pedestrian Reactive Navigation for Crowd Simulation: a Predictive Approach&lt;/strong&gt;
+Sébastien Paris, Julien Pettré, Stéphane Donikian
+&lt;a href=&quot;/files/About_NavMesh/P11_Pedestrian_Reactive_Navigation_for_Crowd_Pedestrian_Reactive_Navigation_for_Crowd_Simulation_a_Predictive_Approach.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Study: Navigation Mesh Generation&lt;/h2&gt;
+&lt;p&gt;Stephen Pratt 在其项目 &lt;a href=&quot;http://www.critterai.org/projects/nmgen_study/index.html&quot;&gt;《Study: Navigation Mesh Generation》&lt;/a&gt; 中提供了一个 Java 版本的 Recast 实现，并在文档中对算法细节及参数进行了详细的讨论。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image_NavigationMeshGeneration.png&quot; alt=&quot;Study: Navigation Mesh Generation&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;其中，&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.critterai.org/projects/nmgen_study/diffs.html&quot;&gt;《Differences Between NMGen and Recast》&lt;/a&gt;描述了其实现与 Recast &amp;amp; Detour 项目的异同之处；&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.critterai.org/projects/nmgen_study/config.html&quot;&gt;《Configuration Parameters》&lt;/a&gt;罗列了算法中各参数对生成寻路网格数据的影响。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Crowds In A Polygon Soup: Next-Gen Path Planning&lt;/h2&gt;
+&lt;p&gt;Mikko Mononen 在 Recast &amp;amp; Detour 中生成NavMesh的基本流程受到 GDC2006 上演讲&lt;a href=&quot;http://gdcvault.com/play/1013192/Crowds-In-A-Polygon-Soup&quot;&gt;《Crowds In A Polygon Soup: Next-Gen Path Planning》&lt;/a&gt;的启发。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Session:  Crowds In A Polygon Soup: Next-Gen Path Planning&lt;/strong&gt;
+By David Miles, David Miles, David Miles, David Miles&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/files/About_NavMesh/GDC-06-038.mp3&quot;&gt;Session mp3&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/files/About_NavMesh/gdc2006_miles_david_pathplanning.ppt&quot;&gt;Session ppt&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;谷阿莫带你十分钟看完 NavMesh 生成算法&lt;/h2&gt;
+&lt;p&gt;没有时间看完上面资料的同学可以看下面这个《谷阿莫带你十分钟看完 NavMesh 生成算法》的小抄。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/About_NavMesh/Image[1].png&quot; alt=&quot;谷阿莫带你十分钟看完 NavMesh 生成算法&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/2016/08/21/A_Quick_Introduction_to_NavMesh/&quot;&gt;谷阿莫带你十分钟看完 NavMesh 生成算法&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>Yous</name>
+          
+          
+        </author>
+      
+
+      
+        <category term="Game" />
+      
+
+      
+
+      
+        <summary type="html">这是一篇关于NavMesh的资料整理和总结笔记。整理了前段时间收集的NavMesh相关的资料和一个简单的算法描述。 （文章出现的所有算法描述和资料均来源于互联网，绝无半点个人原创内容，请放心阅读。） Recast &amp;amp; Detour Recast &amp;amp; Detour GITHUB PAGE 是一个开源的游戏寻路引擎，被包括Unity，UE4等游戏引擎采用。</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
       <title type="html">实习离职</title>
       
       <link href="https://wo1fsea.github.io/2014/11/27/A_New_Begin/" rel="alternate" type="text/html" title="实习离职" />
@@ -267,6 +757,882 @@
 
       
         <summary type="html">今天终于实习离职了，从5月8日到11月28日，在网易游戏实习了接近7个月。今天离职信里终结了下，在UniSDK，完整的东西大概做了下面这些，然后零零索索的给游戏处理各种iOS疑难杂症。 + NtUniSdkFramework + 91 + PP + Tongbu + DownJoy + iTools + KuaiYong + NetEase + YiXin + Line + NtShareSdkFramework + YiXin + WeiXin + Weibo + NtUniSdk Xcode Plugin + U3D C# Wrapper for both Android and iOS NtUniSdk + Flash ANE for both Android and iOS NtUniSdk</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">推荐一个系列视频《Extra Credits》</title>
+      
+      <link href="https://wo1fsea.github.io/2014/11/26/Extra_Credits/" rel="alternate" type="text/html" title="推荐一个系列视频《Extra Credits》" />
+      <published>2014-11-26T16:43:39+00:00</published>
+      <updated>2014-11-26T16:43:39+00:00</updated>
+      <id>https://wo1fsea.github.io/2014/11/26/Extra_Credits</id>
+      <content type="html" xml:base="https://wo1fsea.github.io/2014/11/26/Extra_Credits/">&lt;p&gt;最近中午的午休时间都在看&lt;a href=&quot;http://extra-credits.net/&quot;&gt;《Extra Credits》&lt;/a&gt;，挺赞的，是一个讨论游戏行业相关话题的系列视频。在此推荐一下。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/extra_credits.png&quot; alt=&quot;Extra Credits&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;这是wikipedia上的介绍。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Extra Credits is a video lesson series presented by game designer James Portnow, animator/narrator Daniel Floyd, and artists Allison Theus, Elisa “LeeLee” Scaldaferri, Scott DeWitt, and Dan Jones. The series of videos discuss issues pertinent to video games and game studies, particularly discussing issues concerning video game development, addressing the legitimacy of video games as art, and creating intellectual discourse on important issues in gaming culture.[1]&lt;/p&gt;
+
+  &lt;p&gt;– WIKIPEDIA&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Links:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://extra-credits.net/&quot;&gt;Official Website&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/user/ExtraCreditz&quot;&gt;Extra Credits’s channel on YouTube&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Extra_Credits&quot;&gt;the wikipedia link fo Extra Credits&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>Yous</name>
+          
+          
+        </author>
+      
+
+      
+        <category term="Daily" />
+      
+
+      
+
+      
+        <summary type="html">最近中午的午休时间都在看《Extra Credits》，挺赞的，是一个讨论游戏行业相关话题的系列视频。在此推荐一下。</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">黑魔法之Xcode Plugin开发</title>
+      
+      <link href="https://wo1fsea.github.io/2014/11/24/Black_Magic_Xcode_Plugin/" rel="alternate" type="text/html" title="黑魔法之Xcode Plugin开发" />
+      <published>2014-11-24T14:42:01+00:00</published>
+      <updated>2014-11-24T14:42:01+00:00</updated>
+      <id>https://wo1fsea.github.io/2014/11/24/Black_Magic_Xcode_Plugin</id>
+      <content type="html" xml:base="https://wo1fsea.github.io/2014/11/24/Black_Magic_Xcode_Plugin/">&lt;p&gt;Xcode 插件的黑科技&lt;/p&gt;
+
+&lt;p&gt;##1. 取得项目路径&lt;/p&gt;
+
+&lt;p&gt;先贴段代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NSString *workspacePath = @&quot;&quot;;
+
+// to find current project path
+NSArray *workspaceWindowControllers = [NSClassFromString(@&quot;IDEWorkspaceWindowController&quot;) valueForKey:@&quot;workspaceWindowControllers&quot;];
+id workSpace;
+for (id controller in workspaceWindowControllers) {
+    if ([[controller valueForKey:@&quot;window&quot;] isEqual:[NSApp keyWindow]]) {
+        workSpace = [controller valueForKey:@&quot;_workspace&quot;];
+    }
+}
+
+if (workSpace) {
+    workspacePath = [[workSpace valueForKey:@&quot;representingFilePath&quot;] valueForKey:@&quot;_pathString&quot;];
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这段代码位于 BMPlugin.m 中，作用是取得当前 workspace，并读取其文件路径。&lt;/p&gt;
+
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;由于 Xcode 插件开发基本无文档可查，这段代码也是从网上 copy 回来的。完全没有系统了解的方法。&lt;/p&gt;
+
+  &lt;p&gt;值得注意的是，这些都不是公开的API，所以，Xcode 版本迭代时，注意检查兼容性。&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;##2. 标示支持的 Xcode 版本&lt;/p&gt;
+
+&lt;p&gt;插件项目的 info.plist 需要添加 DVTPlugInCompatibilityUUIDs 标示支持的 Xcode 版本。&lt;/p&gt;
+
+&lt;p&gt;当前 Xcode 版本的 DVTPlugInCompatibilityUUID 可在 Xcode.app/Contents/Info.plist 找到。&lt;/p&gt;
+
+&lt;p&gt;如果对应 Xcode 版本的 DVTPlugInCompatibilityUUID 没有被添加到 info.plist 中，那么该版本 Xcode 启动时不会加载插件。&lt;/p&gt;
+
+&lt;p&gt;##3. XCPluginHasUI NO&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Set XCPluginHasUI in Info.plist to YES to disable your plugin&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;记得这个属性 XCPluginHasUI 需要设置为 NO。&lt;/p&gt;
+
+&lt;p&gt;##4. 其他需要注意的&lt;/p&gt;
+
+&lt;p&gt;编译的时候记得把 .xib 界面文件添加到 Compile Sources 里面，否则，编译出来的包里面没有对应的 .nib 。&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>Yous</name>
+          
+          
+        </author>
+      
+
+      
+        <category term="iOS" />
+      
+
+      
+
+      
+        <summary type="html">Xcode 插件的黑科技 ##1. 取得项目路径 先贴段代码： NSString *workspacePath = @&quot;&quot;; // to find current project path NSArray *workspaceWindowControllers = [NSClassFromString(@&quot;IDEWorkspaceWindowController&quot;) valueForKey:@&quot;workspaceWindowControllers&quot;]; id workSpace; for (id controller in workspaceWindowControllers) { if ([[controller valueForKey:@&quot;window&quot;] isEqual:[NSApp keyWindow]]) { workSpace = [controller valueForKey:@&quot;_workspace&quot;]; } } if (workSpace) { workspacePath = [[workSpace valueForKey:@&quot;representingFilePath&quot;] valueForKey:@&quot;_pathString&quot;]; } 这段代码位于 BMPlugin.m 中，作用是取得当前 workspace，并读取其文件路径。</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">关于AppStore IAP的新旧Receipt</title>
+      
+      <link href="https://wo1fsea.github.io/2014/08/17/About_IAP_Receipt/" rel="alternate" type="text/html" title="关于AppStore IAP的新旧Receipt" />
+      <published>2014-08-17T13:27:40+00:00</published>
+      <updated>2014-08-17T13:27:40+00:00</updated>
+      <id>https://wo1fsea.github.io/2014/08/17/About_IAP_Receipt</id>
+      <content type="html" xml:base="https://wo1fsea.github.io/2014/08/17/About_IAP_Receipt/">&lt;p&gt;iOS7.0后，SKPayment的property transactionReceipt变成了DEPRECATED。&lt;/p&gt;
+
+&lt;p&gt;建议使用新接口来实现receipt的获取。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; [[[NSBundle mainBundle] appStoreReceiptURL] dataWithContentsOfURL:receiptURL];
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果使用了IAP，Apple官方的建议是使用下列代码来处理：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NSData *receipt = nil;
+
+if (floor(NSFoundationVersionNumber) &amp;lt;= NSFoundationVersionNumber_iOS_6_1) {
+    // Load resources for iOS 6.1 or earlier
+    receipt = transaction.transactionReceipt;
+
+} else {
+    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+    receipt = [NSData dataWithContentsOfURL:receiptURL];
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上面的代码很容易以为，新旧接口取得的receipt格式是一致的。其实不然。&lt;/p&gt;
+
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;在NtUniSdk里面,iOS官方渠道的易信和网易通行证使用了IAP,然后使用了上述Apple官方建议的代码，结果就是receipt格式不一致，计费验证不通过，把接入SDK的G3坑了一顿。&lt;/p&gt;
+
+&lt;p&gt;原来旧接口返回的receipt如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2014-07-24 15:53:51.284 [NetEase]iOSNtUniSdkFrameworkDemo[22831:4107] [NtUniSdk] IAP jsonResponse: {
+	receipt =     {
+    	bid = &quot;com.netease.sdk.test&quot;;
+    	bvrs = &quot;1.0&quot;;
+    	&quot;item_id&quot; = 892617314;
+    	&quot;original_purchase_date&quot; = &quot;2014-07-24 07:43:14 Etc/GMT&quot;;
+    	&quot;original_purchase_date_ms&quot; = 1406187794660;
+    	&quot;original_purchase_date_pst&quot; = &quot;2014-07-24 00:43:14 America/Los_Angeles&quot;;
+    	&quot;original_transaction_id&quot; = 1000000117879059;
+    	&quot;product_id&quot; = &quot;com.netease.sdk.test.item2&quot;;
+    	&quot;purchase_date&quot; = &quot;2014-07-24 07:43:14 Etc/GMT&quot;;
+    	&quot;purchase_date_ms&quot; = 1406187794660;
+    	&quot;purchase_date_pst&quot; = &quot;2014-07-24 00:43:14 America/Los_Angeles&quot;;
+    	quantity = 1;
+    	&quot;transaction_id&quot; = 1000000117879059;
+    	&quot;unique_identifier&quot; = 0000b0196818;
+    	&quot;unique_vendor_identifier&quot; = &quot;FEF4F2DB-D07D-4B96-8F22-592A4B9CBAE7&quot;;
+	};
+	status = 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;而新接口返回的receipt：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2014-07-24 17:11:16.475 [NetEase]iOSNtUniSdkFrameworkDemo[185:748f] [NtUniSdk] IAP jsonResponse: {
+	environment = Sandbox;
+	receipt =     {
+    	&quot;adam_id&quot; = 0;
+    	&quot;application_version&quot; = &quot;1.0&quot;;
+    	&quot;bundle_id&quot; = &quot;com.netease.sdk.test&quot;;
+    	&quot;download_id&quot; = 0;
+    	&quot;in_app&quot; =         (
+                    	{
+            	&quot;is_trial_period&quot; = false;
+            	&quot;original_purchase_date&quot; = &quot;2014-07-24 09:11:00 Etc/GMT&quot;;
+            	&quot;original_purchase_date_ms&quot; = 1406193060000;
+            	&quot;original_purchase_date_pst&quot; = &quot;2014-07-24 02:11:00 America/Los_Angeles&quot;;
+            	&quot;original_transaction_id&quot; = 1000000117894869;
+            	&quot;product_id&quot; = &quot;com.netease.sdk.test.item2&quot;;
+            	&quot;purchase_date&quot; = &quot;2014-07-24 09:11:01 Etc/GMT&quot;;
+            	&quot;purchase_date_ms&quot; = 1406193061000;
+            	&quot;purchase_date_pst&quot; = &quot;2014-07-24 02:11:01 America/Los_Angeles&quot;;
+            	quantity = 1;
+            	&quot;transaction_id&quot; = 1000000117894869;
+        	}
+    	);
+    	&quot;original_application_version&quot; = &quot;1.0&quot;;
+    	&quot;original_purchase_date&quot; = &quot;2013-08-01 07:00:00 Etc/GMT&quot;;
+    	&quot;original_purchase_date_ms&quot; = 1375340400000;
+    	&quot;original_purchase_date_pst&quot; = &quot;2013-08-01 00:00:00 America/Los_Angeles&quot;;
+    	&quot;receipt_type&quot; = ProductionSandbox;
+    	&quot;request_date&quot; = &quot;2014-07-24 09:11:17 Etc/GMT&quot;;
+    	&quot;request_date_ms&quot; = 1406193077021;
+    	&quot;request_date_pst&quot; = &quot;2014-07-24 02:11:17 America/Los_Angeles&quot;;
+	};
+	status = 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;新旧receipt在验证API接口方面无变化，变化主要在于返回的jsonResponese格式。
+新的jsonResponese格式官网文档如下：&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Receipt Fields
+https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html#//apple_ref/doc/uid/TP40010573-CH106-SW1&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;下面是程序中实际输出jsonResponese的Log，值得注意的有receipt字段中的in_app字段可能包含多个transaction的receipt。
+客户端APP中的新接口每次读取将读取出还没读取过的所有receipt，当上一次transaction完成后，但没有成功调用到读取receipt接口时，即将出现多条，如下第二条Log所示。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2014-07-24 16:06:52.077 [NetEase]iOSNtUniSdkFrameworkDemo[164:3e0b] [NtUniSdk] IAP jsonResponse: {
+	environment = Sandbox;
+	receipt =     {
+    	&quot;adam_id&quot; = 0;
+    	&quot;application_version&quot; = &quot;1.0&quot;;
+    	&quot;bundle_id&quot; = &quot;com.netease.sdk.test&quot;;
+    	&quot;download_id&quot; = 0;
+    	&quot;in_app&quot; =         (
+        	            {
+            	&quot;is_trial_period&quot; = false;
+            	&quot;original_purchase_date&quot; = &quot;2014-06-23 06:59:55 Etc/GMT&quot;;
+            	&quot;original_purchase_date_ms&quot; = 1403506795000;
+            	&quot;original_purchase_date_pst&quot; = &quot;2014-06-22 23:59:55 America/Los_Angeles&quot;;
+            	&quot;original_transaction_id&quot; = 1000000114795007;
+            	&quot;product_id&quot; = &quot;com.netease.sdk.test.item1&quot;;
+            	&quot;purchase_date&quot; = &quot;2014-06-24 09:06:09 Etc/GMT&quot;;
+            	&quot;purchase_date_ms&quot; = 1403600769000;
+            	&quot;purchase_date_pst&quot; = &quot;2014-06-24 02:06:09 America/Los_Angeles&quot;;
+            	quantity = 1;
+            	&quot;transaction_id&quot; = 1000000114795007;
+        	},
+            	        {
+            	&quot;is_trial_period&quot; = false;
+            	&quot;original_purchase_date&quot; = &quot;2014-06-24 09:06:09 Etc/GMT&quot;;
+            	&quot;original_purchase_date_ms&quot; = 1403600769000;
+            	&quot;original_purchase_date_pst&quot; = &quot;2014-06-24 02:06:09 America/Los_Angeles&quot;;
+            	&quot;original_transaction_id&quot; = 1000000114938703;
+            	&quot;product_id&quot; = &quot;com.netease.sdk.test.item3&quot;;
+            	&quot;purchase_date&quot; = &quot;2014-06-24 09:06:09 Etc/GMT&quot;;
+            	&quot;purchase_date_ms&quot; = 1403600769000;
+            	&quot;purchase_date_pst&quot; = &quot;2014-06-24 02:06:09 America/Los_Angeles&quot;;
+            	quantity = 1;
+            	&quot;transaction_id&quot; = 1000000114938703;
+        	}
+    	);
+    	&quot;original_application_version&quot; = &quot;1.0&quot;;
+    	&quot;original_purchase_date&quot; = &quot;2013-08-01 07:00:00 Etc/GMT&quot;;
+    	&quot;original_purchase_date_ms&quot; = 1375340400000;
+    	&quot;original_purchase_date_pst&quot; = &quot;2013-08-01 00:00:00 America/Los_Angeles&quot;;
+    	&quot;receipt_type&quot; = ProductionSandbox;
+    	&quot;request_date&quot; = &quot;2014-07-24 08:06:54 Etc/GMT&quot;;
+    	&quot;request_date_ms&quot; = 1406189214105;
+    	&quot;request_date_pst&quot; = &quot;2014-07-24 01:06:54 America/Los_Angeles&quot;;
+   		};
+	status = 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Apple的IAP一直存在一个比较蛋疼的问题，在IAP的交易订单上没有填写额外信息的地方。由于存在网游的账号和AppStore支付账号两套系统，道具发放一直存在着可能在支付过程意外中断而导致漏洞的情况。iOS7.0在SKPayment中提供了一个applicationUsername属性用于填写用户信息，不过鉴于iOS7.0－的系统中没有该属性，在短时间内对这种意外情况改善也不大。&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>Yous</name>
+          
+          
+        </author>
+      
+
+      
+        <category term="iOS" />
+      
+
+      
+
+      
+        <summary type="html">iOS7.0后，SKPayment的property transactionReceipt变成了DEPRECATED。 建议使用新接口来实现receipt的获取。 [[[NSBundle mainBundle] appStoreReceiptURL] dataWithContentsOfURL:receiptURL]; 如果使用了IAP，Apple官方的建议是使用下列代码来处理： NSData *receipt = nil; if (floor(NSFoundationVersionNumber) &amp;lt;= NSFoundationVersionNumber_iOS_6_1) { // Load resources for iOS 6.1 or earlier receipt = transaction.transactionReceipt; } else { NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL]; receipt = [NSData dataWithContentsOfURL:receiptURL]; } 上面的代码很容易以为，新旧接口取得的receipt格式是一致的。其实不然。</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">U3D iOS SDK Wrapper</title>
+      
+      <link href="https://wo1fsea.github.io/2014/08/17/U3D_iOS_Wrapper/" rel="alternate" type="text/html" title="U3D iOS SDK Wrapper" />
+      <published>2014-08-17T10:47:54+00:00</published>
+      <updated>2014-08-17T10:47:54+00:00</updated>
+      <id>https://wo1fsea.github.io/2014/08/17/U3D_iOS_Wrapper</id>
+      <content type="html" xml:base="https://wo1fsea.github.io/2014/08/17/U3D_iOS_Wrapper/">&lt;p&gt;很多游戏使用U3D引擎，比如《忍者必须死》、《影之刃》… 所以，iOS NtUniSDK需要一个U3D的wrapper。&lt;/p&gt;
+
+&lt;p&gt;U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层，下面给出简化的项目示例代码。&lt;/p&gt;
+
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#import &quot;UnityAppController.h&quot;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#import &quot;UniHead.h&quot;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#pragma mark __NtNotificationWrapper
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#define GameObject &quot;Main Camera&quot;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#if defined(__cplusplus)
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;C&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#endif
+&lt;/span&gt;	&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UnitySendMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#if defined(__cplusplus)
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#endif
+&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;__NtNotificationWrapper&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__NtNotificationWrapper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__inst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;__NtNotificationWrapper&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initialize&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__inst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;__inst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__NtNotificationWrapper&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+	&lt;span class=&quot;c1&quot;&gt;//初始化通知
+&lt;/span&gt;	&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSNotificationCenter&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;defaultCenter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;addObserver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__inst&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;@selector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;finishInitNotification&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NT_NOTIFICATION_FINISH_INIT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;//初始化完成处理
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;finishInitNotification&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSNotification&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;notification&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   		&lt;span class=&quot;n&quot;&gt;NSLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@&quot;[NtUniSdk] Notification finishInit.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;UnitySendMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GameObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;NT_NOTIFICATION_FINISH_INIT&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doNothing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;cp&quot;&gt;#pragma mark - __NtSdkMgr_X
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#if defined(__cplusplus)
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;C&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#endif
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__makeCString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cstring&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cStringUsingEncoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSUTF8StringEncoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cstring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;malloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cstring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;strcpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cstring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__makeNSString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cstring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cstring&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nsstring&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initWithCString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cstring&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSUTF8StringEncoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nsstring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__NtSdkMgr_ntInit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__NtNotificationWrapper&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doNothing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NtSdkMgr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ntInit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#if defined(__cplusplus)
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#endif
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注意上述代码中，对Notification的传递使用了&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;extern void UnitySendMessage(const char *, const char *, const char *);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;调用GameObject上的回调函数。&lt;/p&gt;
+
+&lt;p&gt;回到U3D，新建一个C#文件，实现SDK的C# Wrapper。下面是简化的代码示例：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;using UnityEngine;
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace NtUniSdk{
+	namespace Unity3d{
+		public class SdkU3d : MonoBehaviour
+		{
+
+			public static void ntInit()
+			{
+				__NtSdkMgr_ntInit();
+			}
+
+			[DllImport(&quot;__Internal&quot;)]
+			private static extern void __NtSdkMgr_ntInit();
+
+		};
+
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在U3D中即可使用该Wrapper操作SDK。&lt;/p&gt;
+
+&lt;p&gt;在U3D中将工程导出为Xcode工程，向Xcode中添加上述完成的C包装层，同时，按文档正常接入NtUniSDK。&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>Yous</name>
+          
+          
+        </author>
+      
+
+      
+        <category term="iOS" />
+      
+
+      
+
+      
+        <summary type="html">很多游戏使用U3D引擎，比如《忍者必须死》、《影之刃》… 所以，iOS NtUniSDK需要一个U3D的wrapper。 U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层，下面给出简化的项目示例代码。</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">黑魔法之 iOS Flash ANE 打包</title>
+      
+      <link href="https://wo1fsea.github.io/2014/08/14/Black_Magic_Flash_iOS_ANE/" rel="alternate" type="text/html" title="黑魔法之 iOS Flash ANE 打包" />
+      <published>2014-08-14T18:09:46+00:00</published>
+      <updated>2014-08-14T18:09:46+00:00</updated>
+      <id>https://wo1fsea.github.io/2014/08/14/Black_Magic_Flash_iOS_ANE</id>
+      <content type="html" xml:base="https://wo1fsea.github.io/2014/08/14/Black_Magic_Flash_iOS_ANE/">&lt;p&gt;MA6-僵尸 使用Flash Air开发，故iOS SDK需包装一个Flash ANE版本。&lt;/p&gt;
+
+&lt;p&gt;用到的环境有：Flash Builder 4.7、Xcode 5.1.1、iOS SDK 7.1&lt;/p&gt;
+
+&lt;h2&gt;Flash Flex 项目&lt;/h2&gt;
+
+&lt;p&gt;在Flash Buildder中建立一个 &lt;strong&gt;Flex手机项目库&lt;/strong&gt; ，新建一个.as脚本，实现as的wrapper。
+下面给了个简化的项目示例，注意其中用于实现回调的onStatus和初始化函数NtUniSdk4Flash。&lt;/p&gt;
+
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.netease.ntunisdk
+{
+	import flash.events.EventDispatcher;
+	import flash.events.StatusEvent;
+	import flash.external.ExtensionContext;
+
+	public class NtUniSdk4Flash extends EventDispatcher
+	{
+		private static var _instance:NtUniSdk4Flash;
+		private var extContext:ExtensionContext;
+
+		public function ntInit():void
+		{
+			extContext.call( &quot;__NtSdkMgr_ntInit&quot; );
+		}
+
+		public static function get instance():NtUniSdk4Flash {
+			if ( !_instance ) {
+				_instance = new NtUniSdk4Flash( new SingletonEnforcer() );
+			}
+			return _instance;
+		}
+
+		public function dispose():void {
+			extContext.dispose();
+		}
+
+		private function onStatus( event:StatusEvent ):void {
+			dispatchEvent( new SDKNotification(event.code, false, false) );
+		}
+
+
+		/**
+	 	* Constructor.
+	 	*/		
+		public function NtUniSdk4Flash( enforcer:SingletonEnforcer ) {
+			super();
+
+			extContext = ExtensionContext.createExtensionContext( &quot;com.netease.ntunisdk.ios.ane&quot;, &quot;&quot; );
+
+			if ( !extContext ) {
+				throw new Error( &quot;iOS NtUniSdk native extension is not supported on this platform.&quot; );
+			}
+
+			extContext.addEventListener( StatusEvent.STATUS, onStatus );
+		}
+	}
+}
+
+class SingletonEnforcer {
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后需要再建立一个extension.xml，示例再如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;extension xmlns=&quot;http://ns.adobe.com/air/extension/3.1&quot;&amp;gt;
+	&amp;lt;id&amp;gt;com.netease.ntunisdk.ios.ane&amp;lt;/id&amp;gt;
+	&amp;lt;versionNumber&amp;gt;0.0.1&amp;lt;/versionNumber&amp;gt;
+	&amp;lt;platforms&amp;gt;  
+		&amp;lt;platform name=&quot;iPhone-ARM&quot;&amp;gt;
+        	&amp;lt;applicationDeployment&amp;gt;
+            	&amp;lt;nativeLibrary&amp;gt;liblibNtUniSdk4Flash.a&amp;lt;/nativeLibrary&amp;gt;
+            	&amp;lt;initializer&amp;gt;ExtInitializer&amp;lt;/initializer&amp;gt;
+        	&amp;lt;/applicationDeployment&amp;gt;
+    	&amp;lt;/platform&amp;gt;
+	&amp;lt;/platforms&amp;gt;
+&amp;lt;/extension&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;因为我们需要的只是iphone版本的ANE，所以只有iPhone-ARM一个平台。com.netease.ntunisdk.ios.ane和上面as代码中的ExtensionContext.createExtensionContext参数是对应的。&lt;/p&gt;
+
+&lt;p&gt;然后，在菜单里，选择 项目 -&amp;gt; 构建项目，编译项目。如果你的构建项目事灰色的，那是打开了自动构建。把 项目 -&amp;gt; 自动构建 取消掉。&lt;/p&gt;
+
+&lt;p&gt;这时候，可以等到 &lt;strong&gt;产出1. 一个.swc文件&lt;/strong&gt; 。&lt;/p&gt;
+
+&lt;h2&gt;Xcode 静态库项目&lt;/h2&gt;
+
+&lt;p&gt;建立一个Coco Touch Static Library, 在Air SDK里找到 FlashRuntimeExtensions.h，添加到项目中。&lt;/p&gt;
+
+&lt;p&gt;新建一个.m文件，下面给出项目简化版的示例：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//
+//  libNtUniSdk4Flash.m
+//  libNtUniSdk4Flash
+//
+//  Created by Huang Quanyong on 14-8-7.
+//  Copyright (c) 2014年 Stupid Dumb Kids. All rights reserved.
+//
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#import &quot;FlashRuntimeExtensions.h&quot;
+#import &quot;UniHead.h&quot;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#define STRING_BUFFER_SIZE 1024*128
+&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;__NtNotificationWrapper&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__NtNotificationWrapper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__inst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FREContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;__NtNotificationWrapper&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initialize&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__inst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+   		__inst = [[__NtNotificationWrapper alloc] init];
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	&lt;span class=&quot;c1&quot;&gt;//初始化通知
+&lt;/span&gt;	&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSNotificationCenter&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;defaultCenter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;addObserver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__inst&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;@selector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;finishInitNotification&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NT_NOTIFICATION_FINISH_INIT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//初始化完成处理
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;finishInitNotification&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSNotification&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;notification&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   		&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NT_NOTIFICATION_FINISH_INIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;uint8_t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;uint8_t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UTF8String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;FREDispatchStatusEventAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;NSLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@&quot;[NtUniSdk] Notification finishInit.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doNothing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;FREObject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__NtSdkMgr_ntInit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FREContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;funcData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;uint32_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FREObject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;NSLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@&quot;[NtUniSdk] __NtSdkMgr_ntInit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__NtNotificationWrapper&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doNothing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NtSdkMgr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ntInit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// InitNativeCode()
+//
+// An InitNativeCode function is necessary in the Android implementation of this extension.
+// Therefore, an analogous function is necessary in the iOS implementation to make
+// the ActionScript interface identical for all implementations.
+// However, the iOS implementation has nothing to do.
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FREObject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InitNativeCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FREContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;funcData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;uint32_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FREObject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;NSLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@&quot;Entering InitNativeCode()&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;c1&quot;&gt;// Nothing to do.
+&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;NSLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@&quot;Exiting InitNativeCode()&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// ContextInitializer()
+//
+// The context initializer is called when the runtime creates the extension context instance.
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ContextInitializer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;uint8_t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctxType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FREContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;uint32_t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numFunctionsToTest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FRENamedFunction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;functionsToSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;NSLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@&quot;Entering ContextInitializer()&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;__context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numFunctionsToTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;FRENamedFunction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FRENamedFunction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;malloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FRENamedFunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numFunctionsToTest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;c1&quot;&gt;//Just for consistency with Android
+&lt;/span&gt;	&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;uint8_t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__NtSdkMgr_ntInit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;functionData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__NtSdkMgr_ntInit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;functionsToSet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;NSLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@&quot;Exiting ContextInitializer()&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// ContextFinalizer()
+//
+// The context finalizer is called when the extension's ActionScript code
+// calls the ExtensionContext instance's dispose() method.
+// If the AIR runtime garbage collector disposes of the ExtensionContext instance, the runtime also calls
+// ContextFinalizer().
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ContextFinalizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FREContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+   	 	NSLog(@”Entering ContextFinalizer()”);
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	// Nothing to clean up.
+
+	NSLog(@&quot;Exiting ContextFinalizer()&quot;);
+
+	return;
+}
+
+// ExtInitializer()
+//
+// The extension initializer is called the first time the ActionScript side of the extension
+// calls ExtensionContext.createExtensionContext() for any context.
+
+void ExtInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet) {
+
+	NSLog(@&quot;Entering ExtInitializer()&quot;);
+
+	*extDataToSet = NULL;
+	*ctxInitializerToSet = &amp;amp;ContextInitializer;
+	*ctxFinalizerToSet = &amp;amp;ContextFinalizer;
+
+	NSLog(@&quot;Exiting ExtInitializer()&quot;);
+}
+
+// ExtFinalizer()
+//
+// The extension finalizer is called when the runtime unloads the extension. However, it is not always called.
+
+void ExtFinalizer(void* extData) {
+
+	NSLog(@&quot;Entering ExtFinalizer()&quot;);
+
+	// Nothing to clean up.
+
+	NSLog(@&quot;Exiting ExtFinalizer()&quot;);
+	return;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注意中间消息的回调实现，调用FREDispatchStatusEventAsync，会触发as里的onStatus。&lt;/p&gt;
+
+&lt;p&gt;编译该项目，得到 &lt;strong&gt;产出2.一个.a文件&lt;/strong&gt; ，即是extension.xml中的&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;nativeLibrary&amp;gt;liblibNtUniSdk4Flash.a&amp;lt;/nativeLibrary&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2&gt;编译ANE&lt;/h2&gt;
+
+&lt;p&gt;编译ANE的过程简直就是黑魔法。&lt;/p&gt;
+
+&lt;p&gt;建立一个platform.xml，写入库依赖连接信息，以iTools SDK为例。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;platform xmlns=&quot;http://ns.adobe.com/air/extension/3.1&quot;&amp;gt;
+	&amp;lt;description&amp;gt;An optional description.&amp;lt;/description&amp;gt;
+	&amp;lt;copyright&amp;gt;2011 (optional)&amp;lt;/copyright&amp;gt;
+	&amp;lt;sdkVersion&amp;gt;5.0.0&amp;lt;/sdkVersion&amp;gt;
+	&amp;lt;linkerOptions&amp;gt;
+    	&amp;lt;option&amp;gt;-ios_version_min 5.0&amp;lt;/option&amp;gt;
+    	&amp;lt;option&amp;gt;-framework AdSupport&amp;lt;/option&amp;gt;
+    	&amp;lt;option&amp;gt;-framework SystemConfiguration&amp;lt;/option&amp;gt;
+    	&amp;lt;option&amp;gt;-framework CFNetwork&amp;lt;/option&amp;gt;
+    	&amp;lt;option&amp;gt;-framework Security&amp;lt;/option&amp;gt;
+    	&amp;lt;option&amp;gt;-framework MobileCoreServices&amp;lt;/option&amp;gt;
+    	&amp;lt;option&amp;gt;-framework QuartzCore&amp;lt;/option&amp;gt;
+    	&amp;lt;option&amp;gt;-framework CoreTelephony&amp;lt;/option&amp;gt;
+
+    	&amp;lt;option&amp;gt;-framework StoreKit&amp;lt;/option&amp;gt;
+    	&amp;lt;option&amp;gt;-framework NtUniSdkiTools&amp;lt;/option&amp;gt;
+
+    	&amp;lt;option&amp;gt;-lc /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libz.dylib&amp;lt;/option&amp;gt;
+	&amp;lt;/linkerOptions&amp;gt;
+&amp;lt;/platform&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;把产出1的.swc文件，后缀改为.zip，解压，得到catalog.xml和library.swf。&lt;/p&gt;
+
+&lt;p&gt;建立一个文件夹，命名为iPhone-ARM，放入三个文件，上一步所得的catalog.xml和library.swf、产出1.的.a文件。&lt;/p&gt;
+
+&lt;p&gt;新建一个目录，放入如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;上文的iPhone-ARM文件夹&lt;/li&gt;
+  &lt;li&gt;上文的platform.xml&lt;/li&gt;
+  &lt;li&gt;上文的extension.xml&lt;/li&gt;
+  &lt;li&gt;产出1.的NtUniSdk4Flash.swc&lt;/li&gt;
+  &lt;li&gt;developer_identity.p12 用于签名的证书，密码为111111 (没有的话，可是用Flash Builder生成，请看后面步骤)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;用以下指令编译ANE：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;/Applications/Adobe Flash Builder 4.7/sdks/4.6.0/bin/adt&quot; \
+	-package -storetype pkcs12 -keystore developer_identity.p12 -storepass 111111 \
+	-target com.netease.ntunisdk.ios.ane extension.xml -swc NtUniSdk4Flash.swc -platform iPhone-ARM -C iPhone-ARM  -platformoptions platform.xml  .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后，你就生成了一个可用的ANE文件。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;没有developer_identity.p12证书&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;请新建一个Flex手机工程，在工程上点击右键，选择属性，并选择 Flex构建打包 -&amp;gt; Apple iOS，在右边选择 数字签名 -&amp;gt; 创建，即可创建一个可用的数字签名证书。&lt;/p&gt;
+&lt;/blockquote&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>Yous</name>
+          
+          
+        </author>
+      
+
+      
+        <category term="iOS" />
+      
+
+      
+
+      
+        <summary type="html">MA6-僵尸 使用Flash Air开发，故iOS SDK需包装一个Flash ANE版本。 用到的环境有：Flash Builder 4.7、Xcode 5.1.1、iOS SDK 7.1 Flash Flex 项目 在Flash Buildder中建立一个 Flex手机项目库 ，新建一个.as脚本，实现as的wrapper。 下面给了个简化的项目示例，注意其中用于实现回调的onStatus和初始化函数NtUniSdk4Flash。</summary>
       
 
       

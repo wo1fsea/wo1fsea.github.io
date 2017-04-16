@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>黑魔法之Xcode Plugin开发</title>
+  <meta name="description" content="Xcode 插件的黑科技 ##1. 取得项目路径 先贴段代码： NSString *workspacePath = @&quot;&quot;; // to find current project path NSArray *workspaceWindowControllers = [NSClassFromString(@&quot;IDEWorkspaceWindowController&quot;) valueForKey:@&quot;workspaceWindowControllers&quot;]; id workSpace; for (id controller in workspaceWindowControllers) { if ([[controller valueForKey:@&quot;window&quot;] isEqual:[NSApp keyWindow]]) { workSpace = [controller valueForKey:@&quot;_workspace&quot;]; } } if (workSpace) { workspacePath = [[workSpace valueForKey:@&quot;representingFilePath&quot;] valueForKey:@&quot;_pathString&quot;]; } 这段代码位于 BMPlugin.m 中，作用是取得当前 workspace，并读取其文件路径。">
+  <meta name="keywords" content="Xcode, Plugin">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://wo1fsea.github.io/2014/11/24/Black_Magic_Xcode_Plugin/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="whiteglass theme" href="https://wo1fsea.github.io/feed.xml">
+
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:title" content="黑魔法之Xcode Plugin开发">
+  <meta name="twitter:description" content="Xcode 插件的黑科技 ##1. 取得项目路径 先贴段代码： NSString *workspacePath = @&quot;&quot;; // to find current project path NSArray *workspaceWindowControllers = [NSClassFromString(@&quot;IDEWorkspaceWindowController...">
+  
+  
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Bitter:400,700,400italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+  
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">whiteglass theme</a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/archives/">Archives</a>
+      
+        
+        <a class="page-link" href="https://github.com/yous/whiteglass">GitHub</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">黑魔法之Xcode Plugin开发</h1>
+    
+    <p class="post-meta"><time datetime="2014-11-24T14:42:01+00:00" itemprop="datePublished">Nov 24, 2014</time> • 
+  
+  
+    
+  
+    
+      <a href="/categories/ios/">iOS</a>
+    
+  
+    
+  
+    
+  
+    
+  
+
+</p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Xcode 插件的黑科技</p>
+
+<p>##1. 取得项目路径</p>
+
+<p>先贴段代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>NSString *workspacePath = @"";
+
+// to find current project path
+NSArray *workspaceWindowControllers = [NSClassFromString(@"IDEWorkspaceWindowController") valueForKey:@"workspaceWindowControllers"];
+id workSpace;
+for (id controller in workspaceWindowControllers) {
+    if ([[controller valueForKey:@"window"] isEqual:[NSApp keyWindow]]) {
+        workSpace = [controller valueForKey:@"_workspace"];
+    }
+}
+
+if (workSpace) {
+    workspacePath = [[workSpace valueForKey:@"representingFilePath"] valueForKey:@"_pathString"];
+}
+</code></pre>
+</div>
+
+<p>这段代码位于 BMPlugin.m 中，作用是取得当前 workspace，并读取其文件路径。</p>
+
+<p><!-- more --></p>
+
+<blockquote>
+  <p>由于 Xcode 插件开发基本无文档可查，这段代码也是从网上 copy 回来的。完全没有系统了解的方法。</p>
+
+  <p>值得注意的是，这些都不是公开的API，所以，Xcode 版本迭代时，注意检查兼容性。</p>
+
+</blockquote>
+
+<p>##2. 标示支持的 Xcode 版本</p>
+
+<p>插件项目的 info.plist 需要添加 DVTPlugInCompatibilityUUIDs 标示支持的 Xcode 版本。</p>
+
+<p>当前 Xcode 版本的 DVTPlugInCompatibilityUUID 可在 Xcode.app/Contents/Info.plist 找到。</p>
+
+<p>如果对应 Xcode 版本的 DVTPlugInCompatibilityUUID 没有被添加到 info.plist 中，那么该版本 Xcode 启动时不会加载插件。</p>
+
+<p>##3. XCPluginHasUI NO</p>
+
+<blockquote>
+  <p>Set XCPluginHasUI in Info.plist to YES to disable your plugin</p>
+</blockquote>
+
+<p>记得这个属性 XCPluginHasUI 需要设置为 NO。</p>
+
+<p>##4. 其他需要注意的</p>
+
+<p>编译的时候记得把 .xib 界面文件添加到 Compile Sources 里面，否则，编译出来的包里面没有对应的 .nib 。</p>
+
+  </div>
+
+</article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+&copy; Yous - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="https://wo1fsea.github.io/feed.xml">RSS</a>
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

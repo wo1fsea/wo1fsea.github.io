@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>U3D iOS SDK Wrapper</title>
+  <meta name="description" content="很多游戏使用U3D引擎，比如《忍者必须死》、《影之刃》… 所以，iOS NtUniSDK需要一个U3D的wrapper。 U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层，下面给出简化的项目示例代码。">
+  <meta name="keywords" content="U3D, iOS, SDK">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://wo1fsea.github.io/2014/08/17/U3D_iOS_Wrapper/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="whiteglass theme" href="https://wo1fsea.github.io/feed.xml">
+
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:title" content="U3D iOS SDK Wrapper">
+  <meta name="twitter:description" content="很多游戏使用U3D引擎，比如《忍者必须死》、《影之刃》… 所以，iOS NtUniSDK需要一个U3D的wrapper。 U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层，下面给出简化的项目示例代码。">
+  
+  
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Bitter:400,700,400italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+  
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">whiteglass theme</a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/archives/">Archives</a>
+      
+        
+        <a class="page-link" href="https://github.com/yous/whiteglass">GitHub</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">U3D iOS SDK Wrapper</h1>
+    
+    <p class="post-meta"><time datetime="2014-08-17T10:47:54+00:00" itemprop="datePublished">Aug 17, 2014</time> • 
+  
+  
+    
+  
+    
+      <a href="/categories/ios/">iOS</a>
+    
+  
+    
+  
+    
+  
+    
+  
+
+</p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>很多游戏使用U3D引擎，比如《忍者必须死》、《影之刃》… 所以，iOS NtUniSDK需要一个U3D的wrapper。</p>
+
+<p>U3D的C#可以调用外部C接口，故需要为NtUniSDK包装一个C语言层，下面给出简化的项目示例代码。</p>
+
+<p><!-- more --></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "UnityAppController.h"
+</span>
+<span class="cp">#import "UniHead.h"
+</span>
+<span class="cp">#pragma mark __NtNotificationWrapper
+</span>
+<span class="cp">#define GameObject "Main Camera"
+</span>
+<span class="cp">#if defined(__cplusplus)
+</span><span class="k">extern</span> <span class="s">"C"</span><span class="p">{</span>
+<span class="cp">#endif
+</span>	<span class="k">extern</span> <span class="kt">void</span> <span class="n">UnitySendMessage</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">);</span>
+<span class="cp">#if defined(__cplusplus)
+</span><span class="p">}</span>
+<span class="cp">#endif
+</span>
+
+<span class="k">@interface</span> <span class="nc">__NtNotificationWrapper</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="k">@end</span>
+
+<span class="k">static</span> <span class="n">__NtNotificationWrapper</span> <span class="o">*</span><span class="n">__inst</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+
+<span class="k">@implementation</span> <span class="nc">__NtNotificationWrapper</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">initialize</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">__inst</span><span class="p">)</span> <span class="p">{</span>
+    	<span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">__inst</span> <span class="o">=</span> <span class="p">[[</span><span class="n">__NtNotificationWrapper</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+
+	<span class="c1">//初始化通知
+</span>	<span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="nf">defaultCenter</span><span class="p">]</span> <span class="nf">addObserver</span><span class="p">:</span><span class="n">__inst</span> <span class="nf">selector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">finishInitNotification</span><span class="o">:</span><span class="p">)</span> <span class="n">name</span><span class="o">:</span><span class="n">NT_NOTIFICATION_FINISH_INIT</span> <span class="n">object</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+
+<span class="p">}</span>
+
+
+<span class="c1">//初始化完成处理
+</span><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">finishInitNotification</span><span class="o">:</span><span class="p">(</span><span class="n">NSNotification</span> <span class="o">*</span><span class="p">)</span><span class="n">notification</span>
+<span class="p">{</span>
+   		<span class="n">NSLog</span><span class="p">(</span><span class="s">@"[NtUniSdk] Notification finishInit."</span><span class="p">);</span>
+	<span class="n">UnitySendMessage</span><span class="p">(</span><span class="n">GameObject</span><span class="p">,</span><span class="s">"NT_NOTIFICATION_FINISH_INIT"</span><span class="p">,</span><span class="s">""</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">doNothing</span><span class="p">{}</span>
+
+<span class="k">@end</span>
+
+
+<span class="cp">#pragma mark - __NtSdkMgr_X
+</span>
+<span class="cp">#if defined(__cplusplus)
+</span><span class="k">extern</span> <span class="s">"C"</span><span class="p">{</span>
+<span class="cp">#endif
+</span>
+<span class="kt">char</span><span class="o">*</span> <span class="n">__makeCString</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">string</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">cstring</span> <span class="o">=</span> <span class="p">[</span><span class="n">string</span> <span class="nf">cStringUsingEncoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">];</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">NULL</span> <span class="o">==</span> <span class="n">cstring</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">cstring</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">strcpy</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">cstring</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">NSString</span><span class="o">*</span> <span class="n">__makeNSString</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">cstring</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cstring</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">NSString</span><span class="o">*</span> <span class="n">nsstring</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithCString</span><span class="p">:</span><span class="n">cstring</span> <span class="nf">encoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">];</span>
+
+    <span class="k">return</span> <span class="n">nsstring</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">__NtSdkMgr_ntInit</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">__NtNotificationWrapper</span> <span class="nf">doNothing</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">NtSdkMgr</span> <span class="nf">ntInit</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="cp">#if defined(__cplusplus)
+</span><span class="p">}</span>
+<span class="cp">#endif
+</span></code></pre>
+</div>
+
+<p>注意上述代码中，对Notification的传递使用了</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extern void UnitySendMessage(const char *, const char *, const char *);
+</code></pre>
+</div>
+
+<p>调用GameObject上的回调函数。</p>
+
+<p>回到U3D，新建一个C#文件，实现SDK的C# Wrapper。下面是简化的代码示例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>using UnityEngine;
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace NtUniSdk{
+	namespace Unity3d{
+		public class SdkU3d : MonoBehaviour
+		{
+
+			public static void ntInit()
+			{
+				__NtSdkMgr_ntInit();
+			}
+
+			[DllImport("__Internal")]
+			private static extern void __NtSdkMgr_ntInit();
+
+		};
+
+	}
+}
+</code></pre>
+</div>
+
+<p>在U3D中即可使用该Wrapper操作SDK。</p>
+
+<p>在U3D中将工程导出为Xcode工程，向Xcode中添加上述完成的C包装层，同时，按文档正常接入NtUniSDK。</p>
+
+  </div>
+
+</article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+&copy; Yous - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="https://wo1fsea.github.io/feed.xml">RSS</a>
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
