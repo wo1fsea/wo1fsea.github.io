@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Hello, Jekyll!</title>
+  <meta name="description" content="把 Github 上这个 Blog 从 Hexo 迁移到了 Jekyll , 原因本是贪图 Jekyll 是 Github Page 官方支持的，可以不用在本地生成直接提交原始文件由 Github Page 生成转换后的页面。后来发现，Github Page 并不支持插件，直接使用默认的转换无法生成 categories 。辗转又发现了，其实可以使用 Travis CI 自动跑运行生成过程并提交到相应的 Github 分支上，就在这个 Blog 的 Repository 里部署了 Travis CI 自动从 draft 分支生成页面提交到 master 里。这个 .travis.yml 里还是很容易看出是具体怎么做的。 今天把原来的数据全部转换了一下到 Jekyll 的格式上，主要是修改了文件名和每篇文章前面的描述。使用了 whiteglass 主题，主题设置的字体不是很适合中文，修改了一下页面字体。使用 Jekyll 还有另一个好处，即是 Jekyll 本身支持 LaTeX 公式，可以在 Markdown 里面方便地书写 LaTeX 公式，详见 Math SupportPermalink 。原来 生存技能 01. Markdown &amp;amp; LaTex Formulas 里用 google chart api 生成 LaTex 公式图片的过程可以不必使用了。">
+  <meta name="keywords" content="Blog">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://wo1fsea.github.io/2017/04/16/Hello_Jekyll/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="A Blog" href="https://wo1fsea.github.io/feed.xml">
+
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:title" content="Hello, Jekyll!">
+  <meta name="twitter:description" content="把 Github 上这个 Blog 从 Hexo 迁移到了 Jekyll , 原因本是贪图 Jekyll 是 Github Page 官方支持的，可以不用在本地生成直接提交原始文件由 Github Page 生成转换后的页面。后来发现，Github Page 并不支持插件，直接使用默认的转换无法生成 categories 。辗转又发现了，其实可以使用 Travis CI 自动跑运行生成过程并...">
+  
+  
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Bitter:400,700,400italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+  
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">A Blog</a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/archives/">Archives</a>
+      
+        
+        <a class="page-link" href="https://github.com/wo1fsea/">GitHub</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">Hello, Jekyll!</h1>
+    
+    <p class="post-meta"><time datetime="2017-04-16T02:38:34+00:00" itemprop="datePublished">Apr 16, 2017</time> • 
+  
+  
+    
+      <a href="/categories/daily/">Daily</a>
+    
+  
+    
+  
+    
+  
+    
+  
+
+</p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>把 Github 上这个 Blog 从 <a href="https://hexo.io">Hexo</a> 迁移到了 <a href="http://jekyllrb.com">Jekyll</a> , 原因本是贪图 Jekyll 是 Github Page 官方支持的，可以不用在本地生成直接提交原始文件由 Github Page 生成转换后的页面。后来发现，Github Page 并不支持插件，直接使用默认的转换无法生成 categories 。辗转又发现了，其实可以使用 <a href="https://travis-ci.org">Travis CI</a> 自动跑运行生成过程并提交到相应的 Github 分支上，就在这个 Blog 的 Repository 里部署了 Travis CI 自动从 draft 分支生成页面提交到 master 里。这个 <a href="https://github.com/wo1fsea/wo1fsea.github.io/blob/draft/.travis.yml">.travis.yml</a> 里还是很容易看出是具体怎么做的。
+今天把原来的数据全部转换了一下到 Jekyll 的格式上，主要是修改了文件名和每篇文章前面的描述。使用了 <a href="https://github.com/yous/whiteglass">whiteglass</a> 主题，主题设置的字体不是很适合中文，修改了一下页面字体。使用 Jekyll 还有另一个好处，即是 Jekyll 本身支持 LaTeX 公式，可以在 Markdown 里面方便地书写 LaTeX 公式，详见 <a href="https://jekyllrb.com/docs/extras/">Math SupportPermalink</a> 。原来 <a href="https://wo1fsea.github.io/2016/11/26/Survival_Skill_Markdown_and_LaTex_Formulas/">生存技能 01. Markdown &amp; LaTex Formulas</a> 里用 google chart api 生成 LaTex 公式图片的过程可以不必使用了。</p>
+
+  </div>
+
+</article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+&copy; wo1fsea (Quanyong Huang) - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="https://wo1fsea.github.io/feed.xml">RSS</a>
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
