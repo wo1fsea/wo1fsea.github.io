@@ -5,7 +5,7 @@
   
   <link href="https://wo1fsea.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://wo1fsea.github.io/" rel="alternate" type="text/html" hreflang="zh-CN" />
-  <updated>2017-04-12T06:09:09+00:00</updated>
+  <updated>2017-04-16T07:40:34+00:00</updated>
   <id>https://wo1fsea.github.io//</id>
 
   
@@ -28,330 +28,13 @@
   
     <entry>
       
-      <title type="html">Welcome to Jekyll!</title>
-      
-      <link href="https://wo1fsea.github.io/2017/04/09/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" />
-      <published>2017-04-09T16:01:23+00:00</published>
-      <updated>2017-04-09T16:01:23+00:00</updated>
-      <id>https://wo1fsea.github.io/2017/04/09/welcome-to-jekyll</id>
-      <content type="html" xml:base="https://wo1fsea.github.io/2017/04/09/welcome-to-jekyll/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      
-        <author>
-            <name>Yous</name>
-          
-          
-        </author>
-      
-
-      
-        <category term="jekyll" />
-      
-        <category term="update" />
-      
-
-      
-
-      
-        <summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated. To add new posts, simply add a file in the _posts directory that follows the convention YYYY-MM-DD-name-of-post.ext and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works. Jekyll also offers powerful support for code snippets: def print_hi(name) puts &quot;Hi, #{name}&quot; end print_hi('Tom') #=&amp;gt; prints 'Hi, Tom' to STDOUT. Check out the Jekyll docs for more info on how to get the most out of Jekyll. File all bugs/feature requests at Jekyll’s GitHub repo. If you have questions, you can ask them on Jekyll Talk.</summary>
-      
-
-      
-      
-    </entry>
-  
-  
-  
-    <entry>
-      
-      <title type="html">Welcome To Jekyll</title>
-      
-      <link href="https://wo1fsea.github.io/2017/01/05/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome To Jekyll" />
-      <published>2017-01-05T00:00:00+00:00</published>
-      <updated>2017-01-05T00:00:00+00:00</updated>
-      <id>https://wo1fsea.github.io/2017/01/05/welcome-to-jekyll</id>
-      <content type="html" xml:base="https://wo1fsea.github.io/2017/01/05/welcome-to-jekyll/">&lt;script type=&quot;math/tex; mode=display&quot;&gt;E=mc^2&lt;/script&gt;
-
-&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      
-        <author>
-            <name>Yous</name>
-          
-          
-        </author>
-      
-
-      
-
-      
-
-      
-        <summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated. To add new posts, simply add a file in the _posts directory that follows the convention YYYY-MM-DD-name-of-post.ext and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works. Jekyll also offers powerful support for code snippets: def print_hi(name) puts &quot;Hi, #{name}&quot; end print_hi('Tom') #=&amp;gt; prints 'Hi, Tom' to STDOUT. Check out the Jekyll docs for more info on how to get the most out of Jekyll. File all bugs/feature requests at Jekyll’s GitHub repo. If you have questions, you can ask them on Jekyll Talk.</summary>
-      
-
-      
-      
-    </entry>
-  
-  
-  
-    <entry>
-      
-      <title type="html">This post demonstrates post content styles</title>
-      
-      <link href="https://wo1fsea.github.io/2017/01/04/this-post-demonstrates-post-content-styles/" rel="alternate" type="text/html" title="This post demonstrates post content styles" />
-      <published>2017-01-04T00:00:00+00:00</published>
-      <updated>2017-01-04T00:00:00+00:00</updated>
-      <id>https://wo1fsea.github.io/2017/01/04/this-post-demonstrates-post-content-styles</id>
-      <content type="html" xml:base="https://wo1fsea.github.io/2017/01/04/this-post-demonstrates-post-content-styles/">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit.&lt;/p&gt;
-
-&lt;h2&gt;Some great heading (h2)&lt;/h2&gt;
-
-&lt;p&gt;Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu.&lt;/p&gt;
-
-&lt;p&gt;Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;h2&gt;Another great heading (h2)&lt;/h2&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit.&lt;/p&gt;
-
-&lt;h3&gt;Some great subheading (h3)&lt;/h3&gt;
-
-&lt;p&gt;Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum.&lt;/p&gt;
-
-&lt;p&gt;Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.&lt;/p&gt;
-
-&lt;h3&gt;Some great subheading (h3)&lt;/h3&gt;
-
-&lt;p&gt;Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;This quote will change your life. It will reveal the secrets of the universe, and all the wonders of humanity. Don’t misuse it.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt.&lt;/p&gt;
-
-&lt;h3&gt;Some great subheading (h3)&lt;/h3&gt;
-
-&lt;p&gt;Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum.&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Hello, World!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;h4&gt;You might want a sub-subheading (h4)&lt;/h4&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;h4&gt;But it’s probably overkill (h4)&lt;/h4&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;h3&gt;Oh hai, an unordered list!!&lt;/h3&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;First item, yo&lt;/li&gt;
-  &lt;li&gt;Second item, dawg&lt;/li&gt;
-  &lt;li&gt;Third item, what what?!&lt;/li&gt;
-  &lt;li&gt;Fourth item, fo sheezy my neezy&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;Oh hai, an ordered list!!&lt;/h3&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;First item, yo&lt;/li&gt;
-  &lt;li&gt;Second item, dawg&lt;/li&gt;
-  &lt;li&gt;Third item, what what?!&lt;/li&gt;
-  &lt;li&gt;Fourth item, fo sheezy my neezy&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2&gt;Headings are cool! (h2)&lt;/h2&gt;
-
-&lt;p&gt;Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;p&gt;Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;p&gt;Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      
-        <author>
-            <name>Bart Simpson</name>
-          
-          
-        </author>
-      
-
-      
-        <category term="junk" />
-      
-
-      
-
-      
-        <summary type="html">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Some great heading (h2) Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. Another great heading (h2) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Some great subheading (h3) Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Some great subheading (h3) Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. This quote will change your life. It will reveal the secrets of the universe, and all the wonders of humanity. Don’t misuse it. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Some great subheading (h3) Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;p&amp;gt;Hello, World!&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. You might want a sub-subheading (h4) In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. But it’s probably overkill (h4) In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Oh hai, an unordered list!! In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. First item, yo Second item, dawg Third item, what what?! Fourth item, fo sheezy my neezy Oh hai, an ordered list!! In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. First item, yo Second item, dawg Third item, what what?! Fourth item, fo sheezy my neezy Headings are cool! (h2) Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.</summary>
-      
-
-      
-      
-    </entry>
-  
-  
-  
-    <entry>
-      
-      <title type="html">Some articles are just so long they deserve a really long title to see if things will break well</title>
-      
-      <link href="https://wo1fsea.github.io/2017/01/03/super-long-article/" rel="alternate" type="text/html" title="Some articles are just so long they deserve a really long title to see if things will break well" />
-      <published>2017-01-03T00:00:00+00:00</published>
-      <updated>2017-01-03T00:00:00+00:00</updated>
-      <id>https://wo1fsea.github.io/2017/01/03/super-long-article</id>
-      <content type="html" xml:base="https://wo1fsea.github.io/2017/01/03/super-long-article/">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      
-        <author>
-            <name>Yous</name>
-          
-          
-        </author>
-      
-
-      
-        <category term="misc" />
-      
-
-      
-
-      
-        <summary type="html">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</summary>
-      
-
-      
-      
-    </entry>
-  
-  
-  
-    <entry>
-      
-      <title type="html">My Example Post</title>
-      
-      <link href="https://wo1fsea.github.io/2017/01/02/my-example-post/" rel="alternate" type="text/html" title="My Example Post" />
-      <published>2017-01-02T00:00:00+00:00</published>
-      <updated>2017-01-02T00:00:00+00:00</updated>
-      <id>https://wo1fsea.github.io/2017/01/02/my-example-post</id>
-      <content type="html" xml:base="https://wo1fsea.github.io/2017/01/02/my-example-post/">&lt;p&gt;Eos eu docendi tractatos sapientem, brute option menandri in vix, quando vivendo accommodare te ius. Nec melius fastidii constituam id, viderer theophrastus ad sit, hinc semper periculis cum id. Noluisse postulant assentior est in, no choro sadipscing repudiandae vix. Vis in euismod delenit dignissim. Ex quod nostrum sit, suas decore animal id ius, nobis solet detracto quo te.&lt;/p&gt;
-
-&lt;p&gt;No laudem altera adolescens has, volumus lucilius eum no. Eam ei nulla audiam efficiantur. Suas affert per no, ei tale nibh sea. Sea ne magna harum, in denique scriptorem sea, cetero alienum tibique ei eos. Labores persequeris referrentur eos ei.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      
-        <author>
-            <name>Yous</name>
-          
-          
-        </author>
-      
-
-      
-
-      
-
-      
-        <summary type="html">Eos eu docendi tractatos sapientem, brute option menandri in vix, quando vivendo accommodare te ius. Nec melius fastidii constituam id, viderer theophrastus ad sit, hinc semper periculis cum id. Noluisse postulant assentior est in, no choro sadipscing repudiandae vix. Vis in euismod delenit dignissim. Ex quod nostrum sit, suas decore animal id ius, nobis solet detracto quo te. No laudem altera adolescens has, volumus lucilius eum no. Eam ei nulla audiam efficiantur. Suas affert per no, ei tale nibh sea. Sea ne magna harum, in denique scriptorem sea, cetero alienum tibique ei eos. Labores persequeris referrentur eos ei.</summary>
-      
-
-      
-      
-    </entry>
-  
-  
-  
-    <entry>
-      
-      <title type="html">A_quick_introduction_to_navmesh</title>
-      
-      <link href="https://wo1fsea.github.io/2016/08/21/A_Quick_Introduction_to_NavMesh/" rel="alternate" type="text/html" title="A_quick_introduction_to_navmesh" />
-      <published>2016-08-21T00:00:00+00:00</published>
-      <updated>2016-08-21T00:00:00+00:00</updated>
+      <title type="html">谷阿莫带你十分钟看完 NavMesh 生成算法</title>
+      
+      <link href="https://wo1fsea.github.io/2016/08/21/A_Quick_Introduction_to_NavMesh/" rel="alternate" type="text/html" title="谷阿莫带你十分钟看完 NavMesh 生成算法" />
+      <published>2016-08-21T04:32:22+00:00</published>
+      <updated>2016-08-21T04:32:22+00:00</updated>
       <id>https://wo1fsea.github.io/2016/08/21/A_Quick_Introduction_to_NavMesh</id>
-      <content type="html" xml:base="https://wo1fsea.github.io/2016/08/21/A_Quick_Introduction_to_NavMesh/">&lt;p&gt;title: 谷阿莫带你十分钟看完 NavMesh 生成算法
-date: 2016-08-21 12:32:22
-tags: [Recast &amp;amp; Detour, NavMesh, Game]
-—&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;（本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”）&lt;/em&gt;&lt;/p&gt;
+      <content type="html" xml:base="https://wo1fsea.github.io/2016/08/21/A_Quick_Introduction_to_NavMesh/">&lt;p&gt;&lt;em&gt;（本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”）&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;大家好，我是谷阿莫，今天我给大家带来的是 NavMesh 的生成方法。&lt;/p&gt;
 
@@ -503,11 +186,13 @@ tags: [Recast &amp;amp; Detour, NavMesh, Game]
       
 
       
-
+        <category term="Game" />
       
 
       
-        <summary type="html">title: 谷阿莫带你十分钟看完 NavMesh 生成算法 date: 2016-08-21 12:32:22 tags: [Recast &amp;amp; Detour, NavMesh, Game] — （本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”） 大家好，我是谷阿莫，今天我给大家带来的是 NavMesh 的生成方法。 这个算法从一个二维的简化例子开始讲起。当我们谈寻路算法的时候，在二维世界中，我们谈的是这样一个问题： 如下图，左边有个走廊，中间是一个通道，右边是一个骷髅状的洞穴。起点在左，目标在右，如何找到一条最为合适的路径。 在这个例子中，我们似乎很难直接求解一个合适的路径。主要的问题时，我们掌握的数据并不是一个抽象的结构化的数据。 所以，首先，我们需要从问题中产生一个抽象的结构化的数据，用来简化问题求解。</summary>
+
+      
+        <summary type="html">（本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”） 大家好，我是谷阿莫，今天我给大家带来的是 NavMesh 的生成方法。 这个算法从一个二维的简化例子开始讲起。当我们谈寻路算法的时候，在二维世界中，我们谈的是这样一个问题： 如下图，左边有个走廊，中间是一个通道，右边是一个骷髅状的洞穴。起点在左，目标在右，如何找到一条最为合适的路径。 在这个例子中，我们似乎很难直接求解一个合适的路径。主要的问题时，我们掌握的数据并不是一个抽象的结构化的数据。 所以，首先，我们需要从问题中产生一个抽象的结构化的数据，用来简化问题求解。</summary>
       
 
       
@@ -518,18 +203,13 @@ tags: [Recast &amp;amp; Detour, NavMesh, Game]
   
     <entry>
       
-      <title type="html">A_new_begin</title>
+      <title type="html">实习离职</title>
       
-      <link href="https://wo1fsea.github.io/2014/11/28/A_New_Begin/" rel="alternate" type="text/html" title="A_new_begin" />
-      <published>2014-11-28T00:00:00+00:00</published>
-      <updated>2014-11-28T00:00:00+00:00</updated>
-      <id>https://wo1fsea.github.io/2014/11/28/A_New_Begin</id>
-      <content type="html" xml:base="https://wo1fsea.github.io/2014/11/28/A_New_Begin/">&lt;p&gt;title: 实习离职
-date: 2014-11-28 05:41:42
-tags: [Game, Work]
-—&lt;/p&gt;
-
-&lt;p&gt;今天终于实习离职了，从5月8日到11月28日，在网易游戏实习了接近7个月。今天离职信里终结了下，在UniSDK，完整的东西大概做了下面这些，然后零零索索的给游戏处理各种iOS疑难杂症。&lt;/p&gt;
+      <link href="https://wo1fsea.github.io/2014/11/27/A_New_Begin/" rel="alternate" type="text/html" title="实习离职" />
+      <published>2014-11-27T21:41:42+00:00</published>
+      <updated>2014-11-27T21:41:42+00:00</updated>
+      <id>https://wo1fsea.github.io/2014/11/27/A_New_Begin</id>
+      <content type="html" xml:base="https://wo1fsea.github.io/2014/11/27/A_New_Begin/">&lt;p&gt;今天终于实习离职了，从5月8日到11月28日，在网易游戏实习了接近7个月。今天离职信里终结了下，在UniSDK，完整的东西大概做了下面这些，然后零零索索的给游戏处理各种iOS疑难杂症。&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+ NtUniSdkFramework
 	+ 91
@@ -580,11 +260,13 @@ tags: [Game, Work]
       
 
       
-
+        <category term="Daily" />
       
 
       
-        <summary type="html">title: 实习离职 date: 2014-11-28 05:41:42 tags: [Game, Work] — 今天终于实习离职了，从5月8日到11月28日，在网易游戏实习了接近7个月。今天离职信里终结了下，在UniSDK，完整的东西大概做了下面这些，然后零零索索的给游戏处理各种iOS疑难杂症。 + NtUniSdkFramework + 91 + PP + Tongbu + DownJoy + iTools + KuaiYong + NetEase + YiXin + Line + NtShareSdkFramework + YiXin + WeiXin + Weibo + NtUniSdk Xcode Plugin + U3D C# Wrapper for both Android and iOS NtUniSdk + Flash ANE for both Android and iOS NtUniSdk</summary>
+
+      
+        <summary type="html">今天终于实习离职了，从5月8日到11月28日，在网易游戏实习了接近7个月。今天离职信里终结了下，在UniSDK，完整的东西大概做了下面这些，然后零零索索的给游戏处理各种iOS疑难杂症。 + NtUniSdkFramework + 91 + PP + Tongbu + DownJoy + iTools + KuaiYong + NetEase + YiXin + Line + NtShareSdkFramework + YiXin + WeiXin + Weibo + NtUniSdk Xcode Plugin + U3D C# Wrapper for both Android and iOS NtUniSdk + Flash ANE for both Android and iOS NtUniSdk</summary>
       
 
       
@@ -595,18 +277,13 @@ tags: [Game, Work]
   
     <entry>
       
-      <title type="html">A_new_blog</title>
+      <title type="html">A New Blog</title>
       
-      <link href="https://wo1fsea.github.io/2014/07/17/A_New_Blog/" rel="alternate" type="text/html" title="A_new_blog" />
-      <published>2014-07-17T00:00:00+00:00</published>
-      <updated>2014-07-17T00:00:00+00:00</updated>
+      <link href="https://wo1fsea.github.io/2014/07/17/A_New_Blog/" rel="alternate" type="text/html" title="A New Blog" />
+      <published>2014-07-17T00:25:34+00:00</published>
+      <updated>2014-07-17T00:25:34+00:00</updated>
       <id>https://wo1fsea.github.io/2014/07/17/A_New_Blog</id>
-      <content type="html" xml:base="https://wo1fsea.github.io/2014/07/17/A_New_Blog/">&lt;p&gt;title: A_New_Blog
-date: 2014-07-17 08:25:34
-tags: daily
-—&lt;/p&gt;
-
-&lt;p&gt;折腾了几天，先post上第一篇。&lt;/p&gt;</content>
+      <content type="html" xml:base="https://wo1fsea.github.io/2014/07/17/A_New_Blog/">&lt;p&gt;折腾了几天，先post上第一篇。&lt;/p&gt;</content>
 
       
       
@@ -623,11 +300,13 @@ tags: daily
       
 
       
-
+        <category term="Daily" />
       
 
       
-        <summary type="html">title: A_New_Blog date: 2014-07-17 08:25:34 tags: daily — 折腾了几天，先post上第一篇。</summary>
+
+      
+        <summary type="html">折腾了几天，先post上第一篇。</summary>
       
 
       

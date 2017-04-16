@@ -1,9 +1,104 @@
-<p>title: 谷阿莫带你十分钟看完 NavMesh 生成算法
-date: 2016-08-21 12:32:22
-tags: [Recast &amp; Detour, NavMesh, Game]
-—</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
 
-<p><em>（本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”）</em></p>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>谷阿莫带你十分钟看完 NavMesh 生成算法</title>
+  <meta name="description" content="（本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”） 大家好，我是谷阿莫，今天我给大家带来的是 NavMesh 的生成方法。 这个算法从一个二维的简化例子开始讲起。当我们谈寻路算法的时候，在二维世界中，我们谈的是这样一个问题： 如下图，左边有个走廊，中间是一个通道，右边是一个骷髅状的洞穴。起点在左，目标在右，如何找到一条最为合适的路径。 在这个例子中，我们似乎很难直接求解一个合适的路径。主要的问题时，我们掌握的数据并不是一个抽象的结构化的数据。 所以，首先，我们需要从问题中产生一个抽象的结构化的数据，用来简化问题求解。">
+  <meta name="keywords" content="Recast & Detour, NavMesh, Game">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://wo1fsea.github.io/2016/08/21/A_Quick_Introduction_to_NavMesh/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="whiteglass theme" href="https://wo1fsea.github.io/feed.xml">
+
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:title" content="谷阿莫带你十分钟看完 NavMesh 生成算法">
+  <meta name="twitter:description" content="（本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”） 大家好...">
+  
+  
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Bitter:400,700,400italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+  
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">whiteglass theme</a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/archives/">Archives</a>
+      
+        
+        <a class="page-link" href="https://github.com/yous/whiteglass">GitHub</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">谷阿莫带你十分钟看完 NavMesh 生成算法</h1>
+    
+    <p class="post-meta"><time datetime="2016-08-21T04:32:22+00:00" itemprop="datePublished">Aug 21, 2016</time> • 
+  
+  
+    
+  
+    
+      <a href="/categories/game/">Game</a>
+    
+  
+
+</p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><em>（本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”）</em></p>
 
 <p>大家好，我是谷阿莫，今天我给大家带来的是 NavMesh 的生成方法。</p>
 
@@ -139,3 +234,29 @@ tags: [Recast &amp; Detour, NavMesh, Game]
 <p><img src="/images/About_NavMesh/Image[31].png" alt="Finding the Next Corner" /></p>
 
 <p>这里就结束了，科科。</p>
+
+  </div>
+
+</article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+&copy; Yous - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="https://wo1fsea.github.io/feed.xml">RSS</a>
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

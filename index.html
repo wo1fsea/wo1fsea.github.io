@@ -92,33 +92,16 @@
       <li>
         <header class="post-header">
           <h1 class="post-title">
-            <a class="post-link" href="/2017/04/09/welcome-to-jekyll/">Welcome to Jekyll!</a>
+            <a class="post-link" href="/2016/08/21/A_Quick_Introduction_to_NavMesh/">谷阿莫带你十分钟看完 NavMesh 生成算法</a>
           </h1>
 
-          <p class="post-meta">Apr 9, 2017 • 
+          <p class="post-meta">Aug 21, 2016 • 
   
   
     
   
     
-  
-    
-      <a href="/categories/jekyll/">jekyll</a>,
-    
-  
-    
-  
-
-  
-  
-    
-  
-    
-  
-    
-  
-    
-      <a href="/categories/update/">update</a>
+      <a href="/categories/game/">Game</a>
     
   
 
@@ -126,22 +109,26 @@
         </header>
 
         <div class="post-content">
-          <p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+          <p><em>（本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”）</em></p>
 
-<p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<p>大家好，我是谷阿莫，今天我给大家带来的是 NavMesh 的生成方法。</p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<p>这个算法从一个二维的简化例子开始讲起。当我们谈寻路算法的时候，在二维世界中，我们谈的是这样一个问题：</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+<p>如下图，左边有个走廊，中间是一个通道，右边是一个骷髅状的洞穴。起点在左，目标在右，如何找到一条最为合适的路径。</p>
 
-<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
+<p>在这个例子中，我们似乎很难直接求解一个合适的路径。主要的问题时，我们掌握的数据并不是一个抽象的结构化的数据。</p>
+
+<p>所以，首先，我们需要从问题中产生一个抽象的结构化的数据，用来简化问题求解。</p>
+
+<p><img src="/images/About_NavMesh/Image[1].png" alt="A Navigation Case in 2D" /></p>
 
 
         </div>
+        
+          <p class="post-continue">
+            <a href="/2016/08/21/A_Quick_Introduction_to_NavMesh/">Read on &rarr;</a>
+          </p>
         
       </li>
     
@@ -151,52 +138,14 @@
       <li>
         <header class="post-header">
           <h1 class="post-title">
-            <a class="post-link" href="/2017/01/05/welcome-to-jekyll/">Welcome To Jekyll</a>
+            <a class="post-link" href="/2014/11/27/A_New_Begin/">实习离职</a>
           </h1>
 
-          <p class="post-meta">Jan 5, 2017</p>
-        </header>
-
-        <div class="post-content">
-          <script type="math/tex; mode=display">E=mc^2</script>
-
-<p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
-
-<p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
-
-<p>Jekyll also offers powerful support for code snippets:</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
-
-<p>Check out the <a href="http://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
-
-
-        </div>
-        
-      </li>
-    
-      
-      
-
-      <li>
-        <header class="post-header">
-          <h1 class="post-title">
-            <a class="post-link" href="/2017/01/04/this-post-demonstrates-post-content-styles/">This post demonstrates post content styles</a>
-          </h1>
-
-          <p class="post-meta">Jan 4, 2017 • 
+          <p class="post-meta">Nov 27, 2014 • 
   
   
     
-  
-    
-      <a href="/categories/junk/">junk</a>
-    
-  
+      <a href="/categories/daily/">Daily</a>
     
   
     
@@ -206,91 +155,38 @@
         </header>
 
         <div class="post-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit.</p>
+          <p>今天终于实习离职了，从5月8日到11月28日，在网易游戏实习了接近7个月。今天离职信里终结了下，在UniSDK，完整的东西大概做了下面这些，然后零零索索的给游戏处理各种iOS疑难杂症。</p>
 
-<h2>Some great heading (h2)</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code>+ NtUniSdkFramework
+	+ 91
+	+ PP
+	+ Tongbu
+	+ DownJoy
+	+ iTools
+	+ KuaiYong
+	+ NetEase
+	+ YiXin
+	+ Line
 
-<p>Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu.</p>
++ NtShareSdkFramework
+	+ YiXin
+	+ WeiXin
+	+ Weibo
 
-<p>Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</p>
++ NtUniSdk Xcode Plugin
 
-<h2>Another great heading (h2)</h2>
++ U3D C# Wrapper for both Android and iOS NtUniSdk
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit.</p>
-
-<h3>Some great subheading (h3)</h3>
-
-<p>Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum.</p>
-
-<p>Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.</p>
-
-<h3>Some great subheading (h3)</h3>
-
-<p>Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</p>
-
-<blockquote>
-  <p>This quote will change your life. It will reveal the secrets of the universe, and all the wonders of humanity. Don’t misuse it.</p>
-</blockquote>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt.</p>
-
-<h3>Some great subheading (h3)</h3>
-
-<p>Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum.</p>
-
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;/head&gt;</span>
-  <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;p&gt;</span>Hello, World!<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
++ Flash ANE for both Android and iOS NtUniSdk
 </code></pre>
 </div>
 
-<p>In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.</p>
-
-<h4>You might want a sub-subheading (h4)</h4>
-
-<p>In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.</p>
-
-<p>In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.</p>
-
-<h4>But it’s probably overkill (h4)</h4>
-
-<p>In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.</p>
-
-<h3>Oh hai, an unordered list!!</h3>
-
-<p>In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.</p>
-
-<ul>
-  <li>First item, yo</li>
-  <li>Second item, dawg</li>
-  <li>Third item, what what?!</li>
-  <li>Fourth item, fo sheezy my neezy</li>
-</ul>
-
-<h3>Oh hai, an ordered list!!</h3>
-
-<p>In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.</p>
-
-<ol>
-  <li>First item, yo</li>
-  <li>Second item, dawg</li>
-  <li>Third item, what what?!</li>
-  <li>Fourth item, fo sheezy my neezy</li>
-</ol>
-
-<h2>Headings are cool! (h2)</h2>
-
-<p>Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</p>
-
-<p>Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</p>
-
-<p>Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.</p>
 
         </div>
+        
+          <p class="post-continue">
+            <a href="/2014/11/27/A_New_Begin/">Read on &rarr;</a>
+          </p>
         
       </li>
     
@@ -300,18 +196,14 @@
       <li>
         <header class="post-header">
           <h1 class="post-title">
-            <a class="post-link" href="/2017/01/03/super-long-article/">Some articles are just so long they deserve a really long title to see if things will break well</a>
+            <a class="post-link" href="/2014/07/17/A_New_Blog/">A New Blog</a>
           </h1>
 
-          <p class="post-meta">Jan 3, 2017 • 
+          <p class="post-meta">Jul 17, 2014 • 
   
   
     
-      <a href="/categories/misc/">misc</a>
-    
-  
-    
-  
+      <a href="/categories/daily/">Daily</a>
     
   
     
@@ -321,32 +213,7 @@
         </header>
 
         <div class="post-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</p>
-
-        </div>
-        
-      </li>
-    
-      
-      
-
-      <li>
-        <header class="post-header">
-          <h1 class="post-title">
-            <a class="post-link" href="/2017/01/02/my-example-post/">My Example Post</a>
-          </h1>
-
-          <p class="post-meta">Jan 2, 2017</p>
-        </header>
-
-        <div class="post-content">
-          <p>Eos eu docendi tractatos sapientem, brute option menandri in vix, quando vivendo accommodare te ius. Nec melius fastidii constituam id, viderer theophrastus ad sit, hinc semper periculis cum id. Noluisse postulant assentior est in, no choro sadipscing repudiandae vix. Vis in euismod delenit dignissim. Ex quod nostrum sit, suas decore animal id ius, nobis solet detracto quo te.</p>
-
-<p>No laudem altera adolescens has, volumus lucilius eum no. Eam ei nulla audiam efficiantur. Suas affert per no, ei tale nibh sea. Sea ne magna harum, in denique scriptorem sea, cetero alienum tibique ei eos. Labores persequeris referrentur eos ei.</p>
+          <p>折腾了几天，先post上第一篇。</p>
 
         </div>
         
@@ -355,14 +222,6 @@
   </ul>
 
   
-  <div class="pagination">
-    
-      <a class="previous" href="/posts/2/">&laquo; Older</a>
-    
-
-    
-  </div>
-
 
 
 </div>
