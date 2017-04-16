@@ -1,7 +1,11 @@
-title: 黑魔法之 iOS Flash ANE 打包
-date: 2014-08-15 02:09:46
-tags: [iOS, SDK, Flash, ANE]
 ---
+layout: post
+title: "黑魔法之 iOS Flash ANE 打包"
+date: 2014-08-15 02:09:46 +0800
+categories: iOS
+keywords: iOS, SDK, Flash, ANE
+---
+
 
 MA6-僵尸 使用Flash Air开发，故iOS SDK需包装一个Flash ANE版本。
 

@@ -1,6 +1,9 @@
-title: U3D iOS SDK Wrapper
-date: 2014-08-17 18:47:54
-tags: [U3D, iOS, SDK]
+---
+layout: post
+title: "U3D iOS SDK Wrapper"
+date: 2014-08-17 18:47:54 +0800
+categories: iOS
+keywords: U3D, iOS, SDK
 ---
 
 很多游戏使用U3D引擎，比如《忍者必须死》、《影之刃》... 所以，iOS NtUniSDK需要一个U3D的wrapper。

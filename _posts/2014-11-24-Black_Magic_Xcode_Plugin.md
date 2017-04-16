@@ -1,7 +1,11 @@
-title: 黑魔法之Xcode Plugin开发
-date: 2014-11-24 22:42:01
-tags: [Xcode, Plugin]
 ---
+layout: post
+title: "黑魔法之Xcode Plugin开发"
+date: 2014-11-24 22:42:01 +0800
+categories: iOS
+keywords: Xcode, Plugin
+---
+
 
 Xcode 插件的黑科技
 

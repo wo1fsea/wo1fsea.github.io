@@ -1,6 +1,9 @@
-title: 关于AppStore IAP的新旧Receipt
-date: 2014-08-17 21:27:40
-tags: [iOS, IAP, Receipt]
+---
+layout: post
+title: "关于AppStore IAP的新旧Receipt"
+date: 2014-08-17 21:27:40 +0800
+categories: iOS
+keywords: iOS, IAP, Receipt
 ---
 
 iOS7.0后，SKPayment的property transactionReceipt变成了DEPRECATED。

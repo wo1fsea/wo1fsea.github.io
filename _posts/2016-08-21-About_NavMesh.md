@@ -1,6 +1,9 @@
-title: 关于NavMesh，我所知道的
-date: 2016-08-21 02:37:42
-tags: [Recast & Detour, NavMesh, Game]
+---
+layout: post
+title: "关于NavMesh，我所知道的"
+date: 2016-08-21 02:37:42 +0800
+categories: Game
+keywords: Recast & Detour, NavMesh, Game
 ---
 
 这是一篇关于NavMesh的资料整理和总结笔记。整理了前段时间收集的NavMesh相关的资料和一个简单的算法描述。
