@@ -6,7 +6,6 @@ categories: iOS
 keywords: iOS, SDK, Flash, ANE
 ---
 
-
 MA6-僵尸 使用Flash Air开发，故iOS SDK需包装一个Flash ANE版本。
 
 用到的环境有：Flash Builder 4.7、Xcode 5.1.1、iOS SDK 7.1

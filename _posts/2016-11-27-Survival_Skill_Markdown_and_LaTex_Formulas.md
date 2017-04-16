@@ -6,7 +6,6 @@ categories: Survival
 keywords: Survival Skill, Markdown, LaTex
 ---
 
-
 做笔记写文档最恼人的，可能就是文档标题格式字体字号等等的设置了。所幸用 Markdown 之后，都不用怎么考虑这些细节问题。然而，偶然读书遇到公式，想要记录下来还是挺麻烦的。最好的方法可能是截图，但是还是有格式不一致，不能二次编辑等等问题。这两天发现 atom 的 MPP 插件居然支持 LaTex 的公式编辑和渲染，再配合 google api 的 LaTex 公式渲染，正好解决了这个困扰已久的问题。
 
 恰好最近正在反思，自己平时看书翻资料时间花不少，但记录总结的却不多。正好借机培养下习惯，从一些基础的东西开始整理。掌握这些工具，怎么看都是生存技能，所以这篇叫《生存技能 01. Markdown & LaTex Formulas》，从用 Markdown 和 LaTex 开始。

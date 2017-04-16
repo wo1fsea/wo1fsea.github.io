@@ -6,8 +6,6 @@ categories:
 keywords: lua, json, Parser Markdown, LaTex
 ---
 
-
-
 题目任务描述：封装json格式的数据与lua value间的互相转换功能
 
 下载ECMA-404的描述文件，观察json的数据格式。

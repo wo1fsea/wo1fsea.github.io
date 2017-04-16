@@ -6,7 +6,6 @@ categories: Game
 keywords: Recast & Detour, NavMesh, Game
 ---
 
-
 *（本文配图皆来自《Crowds In A Polygon Soup: Next-Gen Path Planning》By David Miles, David Miles, David Miles, David Miles 与 《Study: Navigation Mesh Generation》By Stephen Pratt。“窃书不能算偷……窃书！……读书人的事，能算偷么？”）*
 
 大家好，我是谷阿莫，今天我给大家带来的是 NavMesh 的生成方法。
