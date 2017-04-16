@@ -2,7 +2,7 @@
 layout: post
 title: "生存技能 01. Markdown & LaTex Formulas"
 date: 2016-11-27 00:21:11 +0800
-categories: "Survival Skill"
+categories: Survival
 keywords: Survival Skill, Markdown, LaTex
 ---
 
